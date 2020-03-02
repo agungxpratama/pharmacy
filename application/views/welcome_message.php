@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+	redirect('index.php/home');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +10,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sublime project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href=" <?php echo base_url("assets/styles/bootstrap4/bootstrap.min.css"); ?> ">
-<link href=" <?php echo base_url("assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css"); ?> rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href=" <?php echo base_url('assets/styles/bootstrap4/bootstrap.min.css'); ?> ">
+<link href=" <?php echo base_url('assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css"); ?> ">
 <link rel="stylesheet" type="text/css" href=" <?php echo base_url("assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css"); ?> ">
 <link rel="stylesheet" type="text/css" href=" <?php echo base_url("assets/plugins/OwlCarousel2-2.2.1/animate.css");?> ">
@@ -39,10 +40,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<a href="">Diagnosa</a>
 										<ul>
 											<li><a href="<?php echo base_url('index.php/tampilan/beli') ?>">Demam</a></li>
-											<li><a href="<?php echo base_url('index.php/proses2/flu') ?>">Flu dan Batuk</a></li>	
-											<li><a href="<?php echo base_url('index.php/tampilan/beli') ?>">Diare</a></li>	
-											<li><a href="<?php echo base_url('index.php/tampilan/beli') ?>">Cacar</a></li>	
-											<li><a href="<?php echo base_url('index.php/tampilan/beli') ?>">Sakit Gigi</a></li>								
+											<li><a href="<?php echo base_url('index.php/proses2/flu') ?>">Flu dan Batuk</a></li>
+											<li><a href="<?php echo base_url('index.php/tampilan/beli') ?>">Diare</a></li>
+											<li><a href="<?php echo base_url('index.php/tampilan/beli') ?>">Cacar</a></li>
+											<li><a href="<?php echo base_url('index.php/tampilan/beli') ?>">Sakit Gigi</a></li>
 										</ul>
 									</li>
 									<li><a href="<?php echo base_url('index.php/proses2/contact')?>">Contact</a></li>
@@ -55,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Search Panel -->
 		<div class="search_panel trans_300">
 			<div class="container">
@@ -87,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="menu menu_mm trans_300">
 		<div class="menu_container menu_mm">
 			<div class="page_menu_content">
-							
+
 				<div class="page_menu_search menu_mm">
 					<form action="#">
 						<input type="search" required="required" class="page_menu_search_input menu_mm" placeholder="Search for products...">
@@ -131,15 +132,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</ul>
 		</div>
 	</div>
-	
+
 	<!-- Home -->
 
 	<div class="home">
 		<div class="home_slider_container">
-			
+
 			<!-- Home Slider -->
 			<div class="owl-carousel owl-theme home_slider">
-				
+
 				<!-- Slider Item -->
 				<div class="owl-item home_slider_item">
 					<div class="home_slider_background" style="background-image:url(assets/images/home_slider_1.jpg)"></div>
@@ -149,7 +150,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col">
 									<div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
 										<div class="home_slider_title">Pharmacy Kids.</div>
-										<div class="home_slider_subtitle">Solusi terbaik untuk anda menangani si kecil yang sedang sakit.</div>										
+										<div class="home_slider_subtitle">Solusi terbaik untuk anda menangani si kecil yang sedang sakit.</div>
 									</div>
 								</div>
 							</div>
@@ -166,7 +167,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col">
 									<div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
 										<div class="home_slider_title">Pharmacy Kids.</div>
-										<div class="home_slider_subtitle">Tidak perlu khawatir jika si kecil sakit di waktu yang tidak tepat.</div>										
+										<div class="home_slider_subtitle">Tidak perlu khawatir jika si kecil sakit di waktu yang tidak tepat.</div>
 									</div>
 								</div>
 							</div>
@@ -183,7 +184,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col">
 									<div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
 										<div class="home_slider_title">Pharmacy Kids.</div>
-										<div class="home_slider_subtitle">Kami hadir untuk memudahkan anda menemukan obat yang sesuai kebutuhan si kecil.</div>										
+										<div class="home_slider_subtitle">Kami hadir untuk memudahkan anda menemukan obat yang sesuai kebutuhan si kecil.</div>
 									</div>
 								</div>
 							</div>
@@ -194,7 +195,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 
 			<!-- Home Slider Dots -->
-			
+
 			<div class="home_slider_dots_container">
 				<div class="container">
 					<div class="row">
@@ -208,7 +209,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 
 		</div>
@@ -216,7 +217,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<!-- Ads -->
 
-	
+
 
 	<!-- Products -->
 
@@ -224,17 +225,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<!-- Ad -->
 
-	
+
 
 	<!-- Icon Boxes -->
 
-	
+
 
 	<!-- Newsletter -->
 
-	
+
 	<!-- Footer -->
-	
+
 	<div class="footer_overlay"></div>
 	<footer class="footer">
 		<div class="footer_background" style="background-image:url(assets/images/footer.jpg)"></div>

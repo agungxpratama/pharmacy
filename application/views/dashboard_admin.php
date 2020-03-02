@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <meta name="description" content="Sublime project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href=" <?php echo base_url("assets/styles/bootstrap4/bootstrap.min.css"); ?> ">
-<link href=" <?php echo base_url("assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css"); ?> rel="stylesheet" type="text/css">
+<link href=" <?php echo base_url("assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css"); ?>" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css"); ?> ">
 <link rel="stylesheet" type="text/css" href=" <?php echo base_url("assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css"); ?> ">
 <link rel="stylesheet" type="text/css" href=" <?php echo base_url("assets/plugins/OwlCarousel2-2.2.1/animate.css");?> ">
@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<ul>
 									<li >
 										<a href="<?php echo base_url('index.php/proses2/addobat') ?>">Tambah Obat</a>
-									</li>									
+									</li>
 									<li><a href="<?php echo base_url('index.php/log/logout'); ?>">Log Out</a></li>
 								</ul>
 							</nav>
@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Search Panel -->
 		<div class="search_panel trans_300">
 			<div class="container">
@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="menu menu_mm trans_300">
 		<div class="menu_container menu_mm">
 			<div class="page_menu_content">
-							
+
 				<div class="page_menu_search menu_mm">
 					<form action="#">
 						<input type="search" required="required" class="page_menu_search_input menu_mm" placeholder="Search for products...">
@@ -123,7 +123,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</ul>
 		</div>
 	</div>
-	
+
 	<!-- Home -->
 
 	<div class="card shadow mb-4" style="margin-top: 150px;">
@@ -134,31 +134,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                  	
+
                     <tr style="color:black; font-size: 20px;">
                       <th>Nama Obat</th>
                       <th>Jenis Obat</th>
                       <th>Stock</th>
-                      <th>Harga</th>                   
-                      
+                      <th>Harga</th>
+
                     </tr>
                     <?php foreach ($lihat as $r) { ?>
                     <tr style="color: #0c3663;">
                       <th><?php echo $r->nama_obat; ?></th>
-                      <th><?php echo $r->jenis_obat; ?></th>                      
+                      <th><?php echo $r->jenis_obat; ?></th>
                       <th><?php echo $r->harga_obat; ?></th>
-                      
+
                       <th>
                       	<a href="<?php echo base_url('tampilan/edit/'.$r->id_obat); ?>"><button>Edit</button></a>
-                      </th>                      
+                      </th>
                       <th>
                       	<a href="<?php echo base_url('tampilan/detail_beli_admin/'.$r->id_obat); ?>"><button>Lihat</button></a>
-                      </th>                  
+                      </th>
                       <th>
                       	<a href="<?php echo base_url('hapus/hapus_obat/'.$r->id_obat); ?>"><button>Hapus</button></a>
                       </th>
-              
-                      
+
+
                     </tr>
                   </thead>
               <?php } ?>
@@ -168,7 +168,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
 	<!-- Ads -->
 
-	
+
 
 	<!-- Products -->
 
@@ -176,17 +176,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<!-- Ad -->
 
-	
+
 
 	<!-- Icon Boxes -->
 
-	
+
 
 	<!-- Newsletter -->
 
-	
+
 	<!-- Footer -->
-	
+
 	<div class="footer_overlay"></div>
 	<footer class="footer">
 		<div class="footer_background" style="background-image:url(assets/images/footer.jpg)"></div>
