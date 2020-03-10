@@ -38,9 +38,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="<?= base_url('assets_home/')?>plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="<?= base_url('assets_home/')?>plugins/easing/easing.js"></script>
 <script src="<?= base_url('assets_home/')?>plugins/parallax-js-master/parallax.min.js"></script>
-<!-- <script src="<?= base_url('assets_home/')?>js/custom.js"></script> -->
+<script src="<?= base_url('assets_home/')?>js/custom.js"></script>
 <!-- <script src="<?= base_url('assets_home/')?>js/categories.js"></script> -->
-<script src="<?= base_url('assets_home/')?>js/product.js"></script>
+<!-- <script src="<?= base_url('assets_home/')?>js/product.js"></script> -->
 <!-- <script src="<?= base_url('assets_home/')?>js/checkout.js"></script> -->
 <!-- <script src="<?= base_url('assets_home/')?>js/contact.js"></script> -->
 </body>
