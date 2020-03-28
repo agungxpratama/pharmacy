@@ -1,3 +1,4 @@
+<div class="content">
 <!-- Begin Page Content -->
     <div class="container-fluid">
         <?php if ($this->session->flashdata('success')): ?>

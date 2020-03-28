@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Sublime</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Sublime project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>styles/bootstrap4/bootstrap.min.css">
-<link href="<?= base_url('assets_home/')?>plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>styles/responsive.css">
-</head>
-<body>
-
 <div class="super_container">
 
 	<!-- Header -->
@@ -26,22 +8,22 @@
 				<div class="row">
 					<div class="col">
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">
-							<div class="logo"><a href="#">Pharmacy Kids.</a></div>
+							<div class="logo"><a href="<?= base_url();?>">Pharmacy Kids.</a></div>
 							<nav class="main_nav">
 								<ul>
 									<li class="hassubs active">
-										<a href="index.html">Beranda</a>
+										<a href="<?= base_url('index.php/home/');?>">Beranda</a>
 										<ul>
-                                            <li><a href="categories.html">Artikel</a></li>
-											<li><a href="categories.html">Diagnosa</a></li>
+                                            <li><a href="<?= base_url('index.php/home/artikel');?>">Artikel</a></li>
+											<li><a href="<?= base_url('index.php/home/diagnosa');?>">Diagnosa</a></li>
 											<li><a href="<?= base_url('index.php/home/produk');?>">Produk</a></li>
-											<li><a href="cart.html">Cart</a></li>
-											<li><a href="checkout.html">Check out</a></li>
-											<li><a href="contact.html">Contact</a></li>
+											<li><a href="<?= base_url('index.php/home/cart');?>">Cart</a></li>
+											<li><a href="<?= base_url('index.php/home/checkOut');?>">Check out</a></li>
+											<!-- <li><a href="">Contact</a></li> -->
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="categories.html">Diagnosa</a>
+										<a href="<?= base_url('index.php/home/diagnosa');?>">Diagnosa</a>
 										<ul>
                                             <li><a href="categories.html">Demam</a></li>
                                             <li><a href="categories.html">Flu & Batuk</a></li>
@@ -57,7 +39,7 @@
 									</li>
 									<!-- <li><a href="#">Accessories</a></li> -->
 									<!-- <li><a href="#">Offers</a></li> -->
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="<?= base_url('index.php/home/contact');?>">Contact</a></li>
                                     <?php
                                         if($this->session->userdata('status') != "login"){
                                             // redirect(base_url("login"));
@@ -78,7 +60,7 @@
 							</nav>
 							<div class="header_extra ml-auto">
 								<div class="shopping_cart">
-									<a href="cart.html">
+									<a href="<?= base_url('index.php/home/cart');?>">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
 											<g>
@@ -89,7 +71,9 @@
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
 											</g>
 										</svg>
-										<div>Cart <span>(0)</span></div>
+										<div>Cart <span>
+											(<?php echo $this->M_All->count('keranjang2') ?>)
+										</span></div>
 									</a>
 								</div>
 								<div class="search">
@@ -142,7 +126,7 @@
 				<!-- <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> -->
 				<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				<li><a href="D:/Tell_U/Joki/Farmacy-kid/sublime/sublime/index.html"><i class="fa fa-mouse-pointer" aria-hidden="true"></i></a></li>
 			</ul>
 		</div>
 	</header>
@@ -167,7 +151,7 @@
     							<li class="page_menu_item menu_mm"><a href="product.html">Product<i class="fa fa-angle-down"></i></a></li>
     							<li class="page_menu_item menu_mm"><a href="cart.html">Cart<i class="fa fa-angle-down"></i></a></li>
     							<li class="page_menu_item menu_mm"><a href="checkout.html">Checkout<i class="fa fa-angle-down"></i></a></li>
-    							<li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
+    							<!-- <li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li> -->
     						</ul>
     					</li>
     					<li class="page_menu_item has-children menu_mm">
@@ -191,7 +175,7 @@
 
     		<div class="menu_social">
     			<ul>
-    				<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+    				<!-- <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> -->
     				<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
     				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
     				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>

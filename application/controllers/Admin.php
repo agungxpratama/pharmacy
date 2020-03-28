@@ -64,24 +64,30 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('success', 'Berhasil di Upload');
 			$data = array('success' => $this->upload->data('foto'));
 			// $this->load->view('pengelolaan/gudang', $data);
+            $foto = $this->upload->data('orig_name');
+            $data = array(
+                'nama_obat' => $this->input->post('nama_obat',true),
+                'foto' => $foto,
+                'kategori' => $this->input->post('kategori',true),
+                'merek' => $this->input->post('merek',true),
+                'jenis_obat' => $this->input->post('jenis_obat',true),
+                'aturan_pakai' => $this->input->post('aturan_pakai',true),
+                'komposisi' => $this->input->post('komposisi',true),
+                'deskripsi' => $this->input->post('deskripsi',true),
+                'kemasan' => $this->input->post('kemasan',true),
+                'indikasi_umum' => $this->input->post('indikasi_umum',true),
+                'manufaktur' => $this->input->post('manufaktur',true),
+                'segmentasi' => $this->input->post('segmentasi',true),
+                'harga_obat' => $this->input->post('harga_obat',true),
+                'efek_samping' => $this->input->post('efek_samping',true)
+            );
+            if ($this->M_All->insert('obat', $data) != true) {
+                redirect('index.php/admin/obat');
+            }else {
+                redirect('index.php/admin/obat');
+            }
+
 		}
-        $foto = $this->upload->data('orig_name');
-        $data = array(
-            'nama_obat' => $this->input->post('nama_obat',true),
-            'foto' => $foto,
-            'kategori' => $this->input->post('kategori',true),
-            'merek' => $this->input->post('merek',true),
-            'jenis_obat' => $this->input->post('jenis_obat',true),
-            'aturan_pakai' => $this->input->post('aturan_pakai',true),
-            'komposisi' => $this->input->post('komposisi',true),
-            'deskripsi' => $this->input->post('deskripsi',true),
-            'kemasan' => $this->input->post('kemasan',true),
-            'indikasi_umum' => $this->input->post('indikasi_umum',true),
-            'manufaktur' => $this->input->post('manufaktur',true),
-            'segmentasi' => $this->input->post('segmentasi',true),
-            'harga_obat' => $this->input->post('harga_obat',true),
-            'efek_samping' => $this->input->post('efek_samping',true)
-        );
         // $this->db->set($data);
         // $insert = $this->M_login->prosinsert('obat',$data);
         // $insert = $this->M_All->insert('obat',$data);
@@ -96,8 +102,8 @@ class Admin extends CI_Controller {
         //     echo "gagal upload";
         //     }
 
-        $this->M_All->insert('obat', $data);
-		redirect('index.php/admin/obat');
+        // $this->M_All->insert('obat', $data);
+		// redirect('index.php/admin/obat');
     }
 
     public function viewObat($id)
@@ -141,6 +147,14 @@ class Admin extends CI_Controller {
     {
         $this->load->view('admin/header');
         $this->load->view('admin/artikel/');
+		$this->load->view('admin/footer');
+    }
+
+    public function categories()
+    {
+        $data['categories'] = $this->M_All->select_distinct('kategori', 'obat')->result();
+        $this->load->view('admin/header');
+        $this->load->view('admin/obat/kategori', $data);
 		$this->load->view('admin/footer');
     }
 }

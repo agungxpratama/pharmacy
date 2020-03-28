@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V18</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -32,7 +32,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="<?= base_url('index.php/Auth/actionLogin');?>" method="post">
 					<span class="login100-form-title p-b-43">
 						Login for User
 					</span>
@@ -68,25 +68,29 @@
 
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit">
 							Login
 						</button>
 					</div>
 
 					<div class="text-center p-t-46 p-b-20">
 						<span class="txt2">
-							or sign up using
+							atau
 						</span>
 					</div>
 
 					<div class="login100-form-social flex-c-m">
-						<a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+						<!-- <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
 							<i class="fa fa-facebook-f" aria-hidden="true"></i>
+						</a> -->
+
+						<a class="login100-form-btn" href="<?= base_url('index.php/auth/register') ?>">
+							Daftar
 						</a>
 
-						<a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+						<!-- <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
 							<i class="fa fa-twitter" aria-hidden="true"></i>
-						</a>
+						</a> -->
 					</div>
 				</form>
 

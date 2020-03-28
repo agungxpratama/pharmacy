@@ -50,13 +50,13 @@ class Auth extends CI_Controller {
 			'password' => $password
 			);
             // ditampung di array
-		$cek = $this->M_User->cek_login("admin",$where)->num_rows();
+		$cek = $this->M_User->cek_login('admin',$where)->num_rows();
         // cek apabila data yang dimasukan ada dalam database
 
 		if($cek > 0){
 			$data_session = array(
 				'nama' => 'admin',
-				'status' => "login",
+				'status' => 'login',
                 'role' => 'admin'
 				);
 			$this->session->set_userdata($data_session);
@@ -72,6 +72,69 @@ class Auth extends CI_Controller {
     {
         $this->load->view('auth/login');
 
+    }
+
+    public function actionLogin()
+    {
+        $email = $this->input->post('email', true);
+        // mendapatkan variabel username dari halaman login
+		$password = $this->input->post('pass', true);
+        // mendapatkan variabel password dari halaman login
+		$where = array(
+			'email' => $email,
+            'password' => md5($password)
+			// 'password' => $password
+			);
+            // ditampung di array
+		$cek = $this->M_User->cek_login('login_user',$where)->num_rows();
+        // cek apabila data yang dimasukan ada dalam database
+
+		if($cek > 0){
+            $where = array('email' => $email, );
+            $data_user = $this->M_All->view_where('user', $where)->row();
+			$data_session = array(
+				'nama' => $data_user->nama_lengkap,
+				'status' => 'login',
+                'role' => 'user'
+				);
+			$this->session->set_userdata($data_session);
+            // menerapkan data session sesuai dengan nama username
+			redirect(base_url("index.php/home"));
+            // apabila berhasil maka akan langsung ke halaman welcome
+		}else{
+			echo "Username dan password salah !.$cek.";
+            print_r($where);
+		}
+    }
+
+    public function register()
+    {
+        $this->load->view('auth/register');
+    }
+
+    public function actionRegister()
+    {
+        $nama = $this->input->post('nama');
+        $alamat = $this->input->post('alamat');
+        $no_telp = $this->input->post('no_telepon');
+        $email = $this->input->post('email');
+        $password = $this->input->post('pass');
+
+        $data = array(
+            'nama_lengkap' => $nama,
+            'alamat' => $alamat,
+            'telepon' => $no_telp,
+            'email' => $email,
+        );
+
+        $data_login = array(
+            'email' => $email,
+            'password' => md5($password)
+        );
+
+        $this->M_All->insert('user', $data);
+        $this->M_All->insert('login_user', $data_login);
+        redirect('index.php/auth/login');
     }
 
     function logout(){

@@ -95,43 +95,43 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-4">
-                    <img src="<?= base_url('assets_admin/img/foto/'.$o->foto); ?>" alt="img-fotoObat">
+                    <img class="w-100" src="<?= base_url('assets_admin/img/foto/'.$o->foto); ?>" alt="img-fotoObat">
                 </div>
                 <div class="col-8">
                     <h5>Nama Obat</h5>
                     <p class="text-lg font-weight-bold text-primary"><?= $o->nama_obat; ?></p>
                     <div class="row border-bottom">
                         <div class="col-4 border-left">
-                            <h5>Kategori</h5>
+                            <h5 class="font-weight-bold">Kategori</h5>
                             <p class="text"><?= $o->kategori; ?></p>
-                            <h5>Jenis Obat</h5>
+                            <h5 class="font-weight-bold">Jenis Obat</h5>
                             <p class="text"><?= $o->jenis_obat; ?></p>
-                            <h5>Harga Obat</h5>
+                            <h5 class="font-weight-bold">Harga Obat</h5>
                             <p class="text">Rp. <?= $o->harga_obat; ?></p>
                         </div>
                         <div class="col-4 border-left">
-                            <h5>Kemasan</h5>
+                            <h5 class="font-weight-bold">Kemasan</h5>
                             <p class="text"><?= $o->kemasan; ?></p>
-                            <h5>Segmentasi</h5>
+                            <h5 class="font-weight-bold">Segmentasi</h5>
                             <p class="text"><?= $o->segmentasi; ?></p>
-                            <h5>Efek Samping</h5>
+                            <h5 class="font-weight-bold">Efek Samping</h5>
                             <p class="text"><?= $o->efek_samping; ?></p>
                         </div>
                         <div class="col-4 border-left">
-                            <h5>Merek</h5>
+                            <h5 class="font-weight-bold">Merek</h5>
                             <p class="text"><?= $o->merek; ?></p>
-                            <h5>Manufaktur</h5>
+                            <h5 class="font-weight-bold">Manufaktur</h5>
                             <p class="text"><?= $o->manufaktur; ?></p>
-                            <h5>Indikasi Umum</h5>
+                            <h5 class="font-weight-bold">Indikasi Umum</h5>
                             <p class="text"><?= $o->indikasi_umum; ?></p>
                         </div>
                     </div>
                     <hr>
-                    <h5>Aturan Pakai</h5>
+                    <h5 class="font-weight-bold">Aturan Pakai</h5>
                     <p class="text"><?= $o->aturan_pakai; ?></p>
-                    <h5>Komposisi</h5>
+                    <h5 class="font-weight-bold">Komposisi</h5>
                     <p class="text"><?= $o->komposisi; ?></p>
-                    <h5>Deskripsi</h5>
+                    <h5 class="font-weight-bold">Deskripsi</h5>
                     <p class="text"><?= $o->deskripsi; ?></p>
                 </div>
             </div>

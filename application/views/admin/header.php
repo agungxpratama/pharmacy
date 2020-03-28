@@ -15,6 +15,9 @@
   <link href="<?= base_url('assets_admin/')?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+  <link href="<?= base_url('assets_admin/'); ?>datatables/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets_admin/'); ?>datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+
   <!-- Custom styles for this template-->
   <link href="<?= base_url('assets_admin/')?>css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -92,25 +95,25 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+        Etc.
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Ketrangan</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+            <h6 class="collapse-header">Data :</h6>
+            <a class="collapse-item" href="<?= base_url('index.php/admin/categories');?>">Daftar Kategori Obat</a>
+            <!-- <a class="collapse-item" href="register.html">Register</a> -->
+            <!-- <a class="collapse-item" href="forgot-password.html">Forgot Password</a> -->
             <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
+            <h6 class="collapse-header">Transaksi</h6>
+            <a class="collapse-item" href="404.html">Pemesanan</a>
+            <!-- <a class="collapse-item" href="blank.html">Blank Page</a> -->
           </div>
         </div>
       </li>
@@ -119,15 +122,15 @@
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+          <span>Statistik</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
-      </li>
+      </li> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

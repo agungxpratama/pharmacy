@@ -7,6 +7,14 @@ class M_All extends CI_Model{
         return $this->db->get($table);
     }
 
+    public function select_distinct($select, $from)
+    {
+        $this->db->distinct();
+        $this->db->select($select);
+        $this->db->from($from);
+        return $this->db->get();
+    }
+
     public function view_where($table,$where)
 	{
 		return $this->db->get_where($table,$where);

@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div class="avds_small_content">
-                    <div class="avds_title">Smart Phones</div>
+                    <div class="avds_title">Obat</div>
                     <div class="avds_link"><a href="categories.html">See More</a></div>
                 </div>
             </div>
