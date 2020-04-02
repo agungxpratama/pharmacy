@@ -73,7 +73,10 @@
 						<!-- Total -->
 						<div class="cart_item_total">Rp. <?= $c->harga_obat*$c->quantity ?>.00</div>
 					</div>
-					<?php endforeach; ?>
+					<?php
+						$total = 0;
+						$total += $c->harga_obat;
+						endforeach; ?>
 
 				</div>
 			</div>
@@ -135,7 +138,7 @@
 							<ul>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="cart_total_title">Subtotal</div>
-									<div class="cart_total_value ml-auto">Rp. 1000.00</div>
+									<div class="cart_total_value ml-auto">Rp. <?= $total; ?>.00</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="cart_total_title">Shipping</div>
@@ -147,7 +150,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="button checkout_button"><a href="#">Proceed to checkout</a></div>
+						<div class="button checkout_button"><a href="<?= base_url('index.php/home/checkout') ?>">Proceed to checkout</a></div>
 					</div>
 				</div>
 			</div>

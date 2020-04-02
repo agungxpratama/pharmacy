@@ -97,11 +97,30 @@ class Home extends CI_Controller {
 
 	public function checkOut()
 	{
+		if($this->session->userdata('role') != "user"){
+  			redirect(base_url("index.php/home"));
+  		}
+		$where = array('id_user' => $this->session->userdata('id_user'), );
+		$data['user'] = $this->M_All->view_where('user', $where)->row();
+		$data['checkout'] = $this->M_All->join_cart('keranjang2', 'obat')->result();
 		$this->load->view('home/base/head_checkout');
 		$this->load->view('home/base/header');
-		$this->load->view('home/checkout');
+		$this->load->view('home/checkout', $data);
 		$this->load->view('home/base/footer');
 		$this->load->view('home/base/foot_checkout');
+	}
+
+	public function saveCheckout()
+	{
+		$data = array(
+			'nama_lengkap' => $this->input->post('nama_depan'),
+			'telepon' => $this->input->post('telepon'),
+			'alamat' => $this->input->post('alamat_lengkap'),
+			'kota' => $this->input->post('kota'),
+			'kode_pos' => $this->input->post('kode_pos'),
+			'provinsi' => $this->input->post('provinsi'),
+			'kode_pos' => $this->input->post('kode_pos'),
+		);
 	}
 
 	public function contact()

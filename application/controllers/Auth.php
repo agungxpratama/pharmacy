@@ -95,7 +95,9 @@ class Auth extends CI_Controller {
 			$data_session = array(
 				'nama' => $data_user->nama_lengkap,
 				'status' => 'login',
-                'role' => 'user'
+                'role' => 'user',
+                'id_user' => $data_user->id_user,
+
 				);
 			$this->session->set_userdata($data_session);
             // menerapkan data session sesuai dengan nama username
