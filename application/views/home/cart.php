@@ -39,7 +39,7 @@
 				</div>
 			</div>
 			<div class="row cart_items_row">
-				<?= print_r($cart); ?>
+				<!-- <?= print_r($cart); ?> -->
 				<div class="col">
 					<?php foreach ($cart as $c): ?>
 
@@ -118,7 +118,7 @@
 					</div>
 
 					<!-- Coupon Code -->
-					<div class="coupon">
+					<!-- <div class="coupon">
 						<div class="section_title">Coupon code</div>
 						<div class="section_subtitle">Enter your coupon code</div>
 						<div class="coupon_form_container">
@@ -127,7 +127,7 @@
 								<button class="button coupon_button"><span>Apply</span></button>
 							</form>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="col-lg-6 offset-lg-2">

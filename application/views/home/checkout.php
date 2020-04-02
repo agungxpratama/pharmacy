@@ -1,6 +1,6 @@
 <div class="home">
 		<div class="home_container">
-			<div class="home_background" style="background-image:url(images/cart.jpg)"></div>
+			<div class="home_background" style="background-image:url(<?= base_url('assets_home/')?>images/cart.jpg)"></div>
 			<div class="home_content_container">
 				<div class="container">
 					<div class="row">
@@ -111,7 +111,7 @@
     										<label for="checkbox_terms"><img src="<?= base_url('assets_home/'); ?>images/check.png" alt=""></label>
     										<span class="checkbox_title">Terms and conditions</span>
     									</div>
-    									<div>
+    									<!-- <div>
     										<input type="checkbox" id="checkbox_account" name="regular_checkbox" class="regular_checkbox">
     										<label for="checkbox_account"><img src="<?= base_url('assets_home/'); ?>images/check.png" alt=""></label>
     										<span class="checkbox_title">Create an account</span>
@@ -120,7 +120,7 @@
     										<input type="checkbox" id="checkbox_newsletter" name="regular_checkbox" class="regular_checkbox">
     										<label for="checkbox_newsletter"><img src="<?= base_url('assets_home/'); ?>images/check.png" alt=""></label>
     										<span class="checkbox_title">Subscribe to our newsletter</span>
-    									</div>
+    									</div> -->
     								</div>
     							</form>
     						</div>
@@ -191,7 +191,7 @@
     						</div>
 
     						<!-- Order Text -->
-    						<div class="order_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra temp or so dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut consectetur lacus.</div>
+    						<!-- <div class="order_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra temp or so dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut consectetur lacus.</div> -->
     						<div class="button order_button"><a href="#">Place Order</a></div>
     					</div>
     				</div>
