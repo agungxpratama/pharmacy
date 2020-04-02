@@ -25,11 +25,20 @@
 									<li class="hassubs">
 										<a href="<?= base_url('index.php/home/diagnosa');?>">Diagnosa</a>
 										<ul>
-                                            <li><a href="categories.html">Demam</a></li>
+											<?php
+									        // $data = $this->M_All->view_where('obat', $where);
+									        $data = $this->M_All->select_distinct('kategori', 'obat')->result();
+											// echo print_r($data);
+
+											?>
+											<?php foreach ($data as $kat): ?>
+												<li><a href="<?= base_url('index.php/home/diagnosa/').$kat->kategori;?>"><?php echo $kat->kategori; ?></a></li>
+											<?php endforeach; ?>
+                                            <!-- <li><a href="categories.html">Demam</a></li>
                                             <li><a href="categories.html">Flu & Batuk</a></li>
                                             <li><a href="categories.html">Diare</a></li>
                                             <li><a href="categories.html">Cacar</a></li>
-                                            <li><a href="categories.html">Sakit Gigi</a></li>
+                                            <li><a href="categories.html">Sakit Gigi</a></li> -->
 											<!-- <li><a href="categories.html">Category</a></li> -->
 											<!-- <li><a href="categories.html">Category</a></li>
 											<li><a href="categories.html">Category</a></li>
@@ -155,7 +164,7 @@
     						</ul>
     					</li>
     					<li class="page_menu_item has-children menu_mm">
-    						<a href="categories.html">Kategori<i class="fa fa-angle-down"></i></a>
+    						<a href="categories.html">Diagnosa<i class="fa fa-angle-down"></i></a>
     						<ul class="page_menu_selection menu_mm">
     							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
     							<!-- <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>

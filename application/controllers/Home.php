@@ -45,9 +45,15 @@ class Home extends CI_Controller {
 		// code...
 	}
 
-	public function diagnosa()
+	public function diagnosa($id)
 	{
-		// code...
+		$where = array('kategori' => $id, );
+		$data['obat'] = $this->M_All->view_where('obat', $where)->result();
+		$this->load->view('home/base/head_categories');
+		$this->load->view('home/base/header');
+		$this->load->view('home/produk', $data);
+		$this->load->view('home/base/footer');
+		$this->load->view('home/base/foot_categories');
 	}
 
 	public function produk()
@@ -74,7 +80,7 @@ class Home extends CI_Controller {
 
 	public function cart()
 	{
-		$data['cart'] = $this->M_All->get('keranjang2')->result();
+		$data['cart'] = $this->M_All->join_cart('keranjang2', 'obat')->result();
 		$this->load->view('home/base/head_cart');
 		$this->load->view('home/base/header');
 		$this->load->view('home/cart', $data);
@@ -82,9 +88,20 @@ class Home extends CI_Controller {
 		$this->load->view('home/base/foot_cart');
 	}
 
+	public function clearCart()
+	{
+		$where = array('id_obat' => $id);
+		$this->M_All->delete($where,'obat');
+		redirect('index.php/admin/obat');
+	}
+
 	public function checkOut()
 	{
-		// code...
+		$this->load->view('home/base/head_checkout');
+		$this->load->view('home/base/header');
+		$this->load->view('home/checkout');
+		$this->load->view('home/base/footer');
+		$this->load->view('home/base/foot_checkout');
 	}
 
 	public function contact()

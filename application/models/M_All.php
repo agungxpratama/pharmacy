@@ -45,7 +45,7 @@ class M_All extends CI_Model{
     {
         $this->db->select('*');
         $this->db->from($from);
-        $this->db->join($at, 'cart.id_barang = barang.id_barang');
+        $this->db->join($at, 'keranjang2.id_obat = obat.id_obat');
         return $this->db->get();
     }
 
