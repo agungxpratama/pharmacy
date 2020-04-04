@@ -166,7 +166,7 @@
 
 <!-- Ad -->
 
-<div class="avds_xl">
+<!-- <div class="avds_xl">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -181,7 +181,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Icon Boxes -->
 
