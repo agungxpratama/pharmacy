@@ -134,6 +134,9 @@ class Admin extends CI_Controller {
             'harga_obat' => $this->input->post('harga_obat',true),
             'efek_samping' => $this->input->post('efek_samping',true)
         );
+
+        $this->M_All->update('obat', $where, $data);
+        redirect('index.php/admin/viewObat/'.$id);
     }
 
     public function HapusObat($id)

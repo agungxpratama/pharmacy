@@ -7,6 +7,15 @@ class M_All extends CI_Model{
         return $this->db->get($table);
     }
 
+    public function select($select, $from)
+    {
+        $this->db->select($select);
+        $this->db->from($from);
+        $this->db->order_by('id_transaksi', 'DESC');
+        $this->db->limit(1);
+        return $this->db->get();
+    }
+
     public function select_distinct($select, $from)
     {
         $this->db->distinct();
@@ -24,6 +33,11 @@ class M_All extends CI_Model{
 	{
 		$this->db->insert($table,$data);
 	}
+
+    public function empty($table)
+    {
+        $this->db->empty_table($table);
+    }
 
 	public function update($table,$where,$data)
 	{

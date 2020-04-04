@@ -48,7 +48,7 @@
 									</li>
 									<!-- <li><a href="#">Accessories</a></li> -->
 									<!-- <li><a href="#">Offers</a></li> -->
-                                    <li><a href="<?= base_url('index.php/home/contact');?>">Contact</a></li>
+                                    <li><a href="<?= base_url('index.php/home/contact');?>">Kontak</a></li>
                                     <?php
                                         if($this->session->userdata('status') != "login"){
                                             // redirect(base_url("login"));

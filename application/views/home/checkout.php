@@ -33,7 +33,7 @@
     						<div class="section_title">Billing Address</div>
     						<div class="section_subtitle">Enter your address info</div>
     						<div class="checkout_form_container">
-    							<form action="#" id="checkout_form" class="checkout_form">
+    							<form action="<?= base_url('index.php/transaksi/simpanCheckout'); ?>" id="form_checkout" class="checkout_form" method="post">
     								<div class="row">
     									<div class="col-xl-6">
     										<!-- Name -->
@@ -56,10 +56,7 @@
     									<label for="checkout_country">Country*</label>
     									<select name="checkout_country" id="checkout_country" class="dropdown_item_select checkout_input" require="required" name="negara">
     										<option>Pilih Negara</option>
-    										<option>Lithuania</option>
-    										<option>Sweden</option>
-    										<option>UK</option>
-    										<option>Italy</option>
+    										<option value="Indonesia">Indonesia</option>
     									</select>
     								</div>
     								<div>
@@ -76,23 +73,24 @@
     								<div>
     									<!-- City / Town -->
     									<label for="checkout_city">City/Town*</label>
-    									<select name="checkout_city" id="checkout_city" class="dropdown_item_select checkout_input" require="required" name="kota">
+                                        <input type="text" id="checkout_city" class="checkout_input" required="required" placeholder="Kota" name="kota">
+                                        <!-- <select name="checkout_city" id="checkout_city" class="dropdown_item_select checkout_input" require="required" name="kota">
     										<option>Pilih Kota</option>
     										<option>City</option>
     										<option>City</option>
     										<option>City</option>
     										<option>City</option>
-    									</select>
+    									</select> -->
     								</div>
     								<div>
     									<!-- Province -->
     									<label for="checkout_province">Province*</label>
-    									<select name="checkout_province" id="checkout_province" class="dropdown_item_select checkout_input" require="required" name="provinsi">
-    										<option>Pilih Provinsi</option>
-    										<option>Province</option>
-    										<option>Province</option>
-    										<option>Province</option>
-    										<option>Province</option>
+    									<select id="checkout_province" class="dropdown_item_select checkout_input" require="required" name="provinsi">
+    										<option value="0">Pilih Provinsi</option>
+    										<option value="Jakarta">Jakarta</option>
+                                            <option value="Jawa Barat">Jawa Barat</option>
+    										<option value="Jawa Tengah">Jawa Tengah</option>
+    										<option value="Jawa Timur">Jawa Timur</option>
     									</select>
     								</div>
     								<div>
@@ -122,6 +120,25 @@
     										<span class="checkbox_title">Subscribe to our newsletter</span>
     									</div> -->
     								</div>
+                                    <!-- Payment Options -->
+            						<div class="payment">
+            							<div class="payment_options">
+            								<label class="payment_option clearfix">Cach on delivery
+            									<input type="radio" name="radio_payment" value="CoD">
+            									<span class="checkmark"></span>
+            								</label>
+            								<label class="payment_option clearfix">Credit card
+            									<input type="radio" name="radio_payment" value="Kartu Kredit">
+            									<span class="checkmark"></span>
+            								</label>
+            								<label class="payment_option clearfix">Direct bank transfer
+            									<input type="radio" checked="checked" name="radio_payment" value="Treansfer Bank">
+            									<span class="checkmark"></span>
+            								</label>
+            							</div>
+            						</div>
+                                    <input type="hidden" name="harga_total" value="<?php $total ?>">
+                                    <input type="hidden" name="jumlah_barang" value="<?php $jumlah_barang ?>">
     							</form>
     						</div>
     					</div>
@@ -144,14 +161,16 @@
                                     <?php
                                     $shipping = 0;
                                     $total = 0;
+                                    $jumlah_barang = 0;
                                     foreach ($checkout as $c): ?>
 
     								<li class="d-flex flex-row align-items-center justify-content-start">
     									<div class="order_list_title"><?= $c->nama_obat.' X '.$c->quantity ?></div>
-    									<div class="order_list_value ml-auto">Rp. <?= $c->harga_obat*$c->quantity ?>.00</div>
+    									<div class="order_list_value ml-auto">Rp. <?= $total_harga_obat = $c->harga_obat*$c->quantity ?>.00</div>
     								</li>
                                     <?php
-                                    $total += $c->harga_obat;
+                                    $total += $total_harga_obat;
+                                    $jumlah_barang += $c->quantity;
                                     endforeach; ?>
     								<li class="d-flex flex-row align-items-center justify-content-start">
     									<div class="order_list_title">Subtotal</div>
@@ -168,31 +187,11 @@
     							</ul>
     						</div>
 
-    						<!-- Payment Options -->
-    						<div class="payment">
-    							<div class="payment_options">
-    								<label class="payment_option clearfix">Paypal
-    									<input type="radio" name="radio">
-    									<span class="checkmark"></span>
-    								</label>
-    								<label class="payment_option clearfix">Cach on delivery
-    									<input type="radio" name="radio">
-    									<span class="checkmark"></span>
-    								</label>
-    								<label class="payment_option clearfix">Credit card
-    									<input type="radio" name="radio">
-    									<span class="checkmark"></span>
-    								</label>
-    								<label class="payment_option clearfix">Direct bank transfer
-    									<input type="radio" checked="checked" name="radio">
-    									<span class="checkmark"></span>
-    								</label>
-    							</div>
-    						</div>
+
 
     						<!-- Order Text -->
     						<!-- <div class="order_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra temp or so dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut consectetur lacus.</div> -->
-    						<div class="button order_button"><a href="#">Place Order</a></div>
+    						<div class="button order_button"><a href="#" onclick="document.getElementById('form_checkout').submit();">Place Order</a></div>
     					</div>
     				</div>
                 <!-- </form> -->

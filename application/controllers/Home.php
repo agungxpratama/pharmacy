@@ -97,9 +97,9 @@ class Home extends CI_Controller {
 
 	public function checkOut()
 	{
-		if($this->session->userdata('role') != "user"){
-  			redirect(base_url("index.php/home"));
-  		}
+		// if($this->session->userdata('role') != "user"){
+  		// 	redirect(base_url("index.php/home"));
+  		// }
 		$where = array('id_user' => $this->session->userdata('id_user'), );
 		$data['user'] = $this->M_All->view_where('user', $where)->row();
 		$data['checkout'] = $this->M_All->join_cart('keranjang2', 'obat')->result();

@@ -16,7 +16,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="<?= base_url()?>index.php/admin/editObat" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url()?>index.php/admin/editObat/<?= $o->id_obat?>" method="post" enctype="multipart/form-data">
             <div class="modal-body">
               <p>Modal body text goes here.</p>
                   <div class="form-group">
