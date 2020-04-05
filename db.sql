@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2020 at 03:11 PM
+-- Generation Time: Apr 06, 2020 at 01:46 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -142,15 +142,15 @@ CREATE TABLE `keranjang` (
   `harga_obat` int(30) NOT NULL,
   `quantity` int(11) NOT NULL,
   `id_user` int(10) NOT NULL,
-  `id_transaksi` int(11) NOT NULL
+  `id_pemesanan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `keranjang`
 --
 
-INSERT INTO `keranjang` (`db_keranjang`, `id_keranjang`, `id_obat`, `nama_obat`, `harga_obat`, `quantity`, `id_user`, `id_transaksi`) VALUES
-(1, 2, 8, 'Panadol', 15000, 3, 1, 1);
+INSERT INTO `keranjang` (`db_keranjang`, `id_keranjang`, `id_obat`, `nama_obat`, `harga_obat`, `quantity`, `id_user`, `id_pemesanan`) VALUES
+(1, 1, 8, 'Panadol', 15000, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -165,7 +165,7 @@ CREATE TABLE `keranjang2` (
   `harga_obat` int(15) NOT NULL,
   `quantity` int(10) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_transaksi` int(11) NOT NULL
+  `id_pemesanan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -222,11 +222,11 @@ INSERT INTO `obat` (`id_obat`, `nama_obat`, `foto`, `kategori`, `merek`, `jenis_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Table structure for table `pemesanan`
 --
 
-CREATE TABLE `transaksi` (
-  `id_transaksi` int(11) NOT NULL,
+CREATE TABLE `pemesanan` (
+  `id_pemesanan` int(11) NOT NULL,
   `nama_lengkap` varchar(255) NOT NULL,
   `telepon` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
@@ -240,15 +240,37 @@ CREATE TABLE `transaksi` (
   `email` varchar(255) NOT NULL,
   `id_user` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `total_harga` int(11) NOT NULL
+  `total_harga` int(11) NOT NULL,
+  `proses` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `pemesanan`
+--
+
+INSERT INTO `pemesanan` (`id_pemesanan`, `nama_lengkap`, `telepon`, `alamat`, `tanggal`, `kota`, `kode_pos`, `kecamatan`, `kelurahan`, `provinsi`, `metode_pembayaran`, `email`, `id_user`, `quantity`, `total_harga`, `proses`) VALUES
+(1, 'qwerty', '822827102', 'qwertyuiop', '2020-04-05', '', '', '', '', '0', 'Treansfer Bank', 'qwe@gmail.com', 0, 3, 45000, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `id_transaksi` int(11) NOT NULL,
+  `id_pemesanan` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `status` int(11) NOT NULL,
+  `bukti` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_transaksi`, `nama_lengkap`, `telepon`, `alamat`, `tanggal`, `kota`, `kode_pos`, `kecamatan`, `kelurahan`, `provinsi`, `metode_pembayaran`, `email`, `id_user`, `quantity`, `total_harga`) VALUES
-(1, 'qwerty', '822827102', 'qwertyuiop', '0000-00-00', '', '', '', '', '0', 'Treansfer Bank', 'qwe@gmail.com', 0, 0, 0);
+INSERT INTO `transaksi` (`id_transaksi`, `id_pemesanan`, `tanggal`, `status`, `bukti`) VALUES
+(1, 1, '2020-04-05', 0, '');
 
 -- --------------------------------------------------------
 
@@ -361,14 +383,14 @@ ALTER TABLE `diagnosa`
 ALTER TABLE `keranjang`
   ADD PRIMARY KEY (`db_keranjang`),
   ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_transaksi` (`id_transaksi`);
+  ADD KEY `id_transaksi` (`id_pemesanan`);
 
 --
 -- Indexes for table `keranjang2`
 --
 ALTER TABLE `keranjang2`
   ADD PRIMARY KEY (`id_keranjang`),
-  ADD KEY `id_transaksi` (`id_transaksi`);
+  ADD KEY `id_transaksi` (`id_pemesanan`);
 
 --
 -- Indexes for table `login_user`
@@ -383,11 +405,18 @@ ALTER TABLE `obat`
   ADD PRIMARY KEY (`id_obat`);
 
 --
+-- Indexes for table `pemesanan`
+--
+ALTER TABLE `pemesanan`
+  ADD PRIMARY KEY (`id_pemesanan`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `id_pemesanan` (`id_pemesanan`);
 
 --
 -- Indexes for table `transaksi_beli`
@@ -442,7 +471,7 @@ ALTER TABLE `keranjang`
 -- AUTO_INCREMENT for table `keranjang2`
 --
 ALTER TABLE `keranjang2`
-  MODIFY `id_keranjang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_keranjang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `login_user`
@@ -455,6 +484,12 @@ ALTER TABLE `login_user`
 --
 ALTER TABLE `obat`
   MODIFY `id_obat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `pemesanan`
+--
+ALTER TABLE `pemesanan`
+  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
@@ -497,6 +532,12 @@ ALTER TABLE `detail_transaksi`
 ALTER TABLE `diagnosa`
   ADD CONSTRAINT `diagnosa_ibfk_2` FOREIGN KEY (`id_artikel`) REFERENCES `artikel` (`id_artikel`),
   ADD CONSTRAINT `diagnosa_ibfk_3` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id_obat`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_pemesanan`) REFERENCES `pemesanan` (`id_pemesanan`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
