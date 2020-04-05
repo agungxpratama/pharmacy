@@ -102,7 +102,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Ketrangan</span>
+          <span>Keterangan</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -112,7 +112,8 @@
             <!-- <a class="collapse-item" href="forgot-password.html">Forgot Password</a> -->
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Transaksi</h6>
-            <a class="collapse-item" href="404.html">Pemesanan</a>
+            <a class="collapse-item" href="<?= base_url('index.php/admin/pemesanan'); ?>">Pemesanan</a>
+            <a class="collapse-item" href="<?= base_url('index.php/admin/transaksi'); ?>">Data Transaksi</a>
             <!-- <a class="collapse-item" href="blank.html">Blank Page</a> -->
           </div>
         </div>

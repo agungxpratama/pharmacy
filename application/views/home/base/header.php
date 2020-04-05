@@ -15,7 +15,7 @@
 										<a href="<?= base_url('index.php/home/');?>">Beranda</a>
 										<ul>
                                             <li><a href="<?= base_url('index.php/home/artikel');?>">Artikel</a></li>
-											<li><a href="<?= base_url('index.php/home/diagnosa');?>">Diagnosa</a></li>
+											<!-- <li><a href="<?= base_url('index.php/home/diagnosa');?>">Diagnosa</a></li> -->
 											<li><a href="<?= base_url('index.php/home/produk');?>">Produk</a></li>
 											<li><a href="<?= base_url('index.php/home/cart');?>">Cart</a></li>
 											<li><a href="<?= base_url('index.php/home/checkOut');?>">Check out</a></li>
@@ -23,7 +23,8 @@
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="<?= base_url('index.php/home/diagnosa');?>">Diagnosa</a>
+										<!-- <a href="<?= base_url('index.php/home/diagnosa');?>">Diagnosa</a> -->
+										<a href="#">Diagnosa</a>
 										<ul>
 											<?php
 									        // $data = $this->M_All->view_where('obat', $where);

@@ -99,20 +99,20 @@
 						<div class="section_title">Shipping method</div>
 						<div class="section_subtitle">Select the one you want</div>
 						<div class="delivery_options">
-							<label class="delivery_option clearfix">Next day delivery
+							<label class="delivery_option clearfix">Pengiriman Besok
 								<input type="radio" name="radio">
 								<span class="checkmark"></span>
-								<span class="delivery_price">Rp. 30000.00</span>
+								<span class="delivery_price">Rp. 25000.00</span>
 							</label>
-							<label class="delivery_option clearfix">Standard delivery
+							<label class="delivery_option clearfix">Pengiriman Normal
 								<input type="radio" name="radio">
 								<span class="checkmark"></span>
-								<span class="delivery_price">Rp. 10000.00</span>
+								<span class="delivery_price">Rp. 20000.00</span>
 							</label>
-							<label class="delivery_option clearfix">Personal pickup
+							<label class="delivery_option clearfix">Pengiriman Sekarang
 								<input type="radio" checked="checked" name="radio">
 								<span class="checkmark"></span>
-								<span class="delivery_price">Free</span>
+								<span class="delivery_price">Rp. 30000.00</span>
 							</label>
 						</div>
 					</div>

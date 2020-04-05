@@ -27,7 +27,55 @@
 		<div class="container">
 			<div class="row">
                 <!-- <form class="" action="" method="post"> -->
-    				<!-- Billing Info -->
+				<!-- Order Info -->
+
+				<div class="col-lg-6">
+					<div class="order checkout_section">
+						<div class="section_title">Your order</div>
+						<div class="section_subtitle">Order details</div>
+
+						<!-- Order details -->
+						<div class="order_list_container">
+							<div class="order_list_bar d-flex flex-row align-items-center justify-content-start">
+								<div class="order_list_title">Product</div>
+								<div class="order_list_value ml-auto">Total</div>
+							</div>
+							<ul class="order_list">
+								<?php
+								$shipping = 0;
+								$total = 0;
+								$jumlah_barang = 0;
+								foreach ($checkout as $c): ?>
+
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="order_list_title"><?= $c->nama_obat.' X '.$c->quantity ?></div>
+									<div class="order_list_value ml-auto">Rp. <?= $total_harga_obat = $c->harga_obat*$c->quantity ?>.00</div>
+								</li>
+								<?php
+								$total += $total_harga_obat;
+								$jumlah_barang += $c->quantity;
+								endforeach; ?>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="order_list_title">Subtotal</div>
+									<div class="order_list_value ml-auto">Rp. <?= $total; ?>.00</div>
+								</li>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="order_list_title">Shipping</div>
+									<div class="order_list_value ml-auto">Free</div>
+								</li>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="order_list_title">Total</div>
+									<div class="order_list_value ml-auto">Rp. <?= $total+$shipping; ?>.00</div>
+								</li>
+							</ul>
+						</div>
+						<!-- Order Text -->
+						<!-- <div class="order_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra temp or so dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut consectetur lacus.</div> -->
+						<div class="button order_button"><a href="#" onclick="document.getElementById('form_checkout').submit();">Place Order</a></div>
+					</div>
+				</div>
+
+					<!-- Billing Info -->
     				<div class="col-lg-6">
     					<div class="billing checkout_section">
     						<div class="section_title">Billing Address</div>
@@ -137,63 +185,14 @@
             								</label>
             							</div>
             						</div>
-                                    <input type="hidden" name="harga_total" value="<?php $total ?>">
-                                    <input type="hidden" name="jumlah_barang" value="<?php $jumlah_barang ?>">
+                                    <input type="hidden" name="harga_total" value="<?= $total ?>">
+                                    <input type="hidden" name="jumlah_barang" value="<?= $jumlah_barang ?>">
     							</form>
     						</div>
     					</div>
     				</div>
 
-    				<!-- Order Info -->
 
-    				<div class="col-lg-6">
-    					<div class="order checkout_section">
-    						<div class="section_title">Your order</div>
-    						<div class="section_subtitle">Order details</div>
-
-    						<!-- Order details -->
-    						<div class="order_list_container">
-    							<div class="order_list_bar d-flex flex-row align-items-center justify-content-start">
-    								<div class="order_list_title">Product</div>
-    								<div class="order_list_value ml-auto">Total</div>
-    							</div>
-    							<ul class="order_list">
-                                    <?php
-                                    $shipping = 0;
-                                    $total = 0;
-                                    $jumlah_barang = 0;
-                                    foreach ($checkout as $c): ?>
-
-    								<li class="d-flex flex-row align-items-center justify-content-start">
-    									<div class="order_list_title"><?= $c->nama_obat.' X '.$c->quantity ?></div>
-    									<div class="order_list_value ml-auto">Rp. <?= $total_harga_obat = $c->harga_obat*$c->quantity ?>.00</div>
-    								</li>
-                                    <?php
-                                    $total += $total_harga_obat;
-                                    $jumlah_barang += $c->quantity;
-                                    endforeach; ?>
-    								<li class="d-flex flex-row align-items-center justify-content-start">
-    									<div class="order_list_title">Subtotal</div>
-    									<div class="order_list_value ml-auto">Rp. <?= $total; ?>.00</div>
-    								</li>
-    								<li class="d-flex flex-row align-items-center justify-content-start">
-    									<div class="order_list_title">Shipping</div>
-    									<div class="order_list_value ml-auto">Free</div>
-    								</li>
-    								<li class="d-flex flex-row align-items-center justify-content-start">
-    									<div class="order_list_title">Total</div>
-    									<div class="order_list_value ml-auto">Rp. <?= $total+$shipping; ?>.00</div>
-    								</li>
-    							</ul>
-    						</div>
-
-
-
-    						<!-- Order Text -->
-    						<!-- <div class="order_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra temp or so dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut consectetur lacus.</div> -->
-    						<div class="button order_button"><a href="#" onclick="document.getElementById('form_checkout').submit();">Place Order</a></div>
-    					</div>
-    				</div>
                 <!-- </form> -->
 			</div>
 		</div>

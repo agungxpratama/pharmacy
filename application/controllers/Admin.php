@@ -153,11 +153,55 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/footer');
     }
 
-    public function categories()
+    public function Categories()
     {
         $data['categories'] = $this->M_All->select_distinct('kategori', 'obat')->result();
         $this->load->view('admin/header');
         $this->load->view('admin/obat/kategori', $data);
 		$this->load->view('admin/footer');
+    }
+
+    public function Pemesanan()
+    {
+        $data['pemesanan'] = $this->M_All->get('pemesanan')->result();
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/pemesanan', $data);
+		$this->load->view('admin/footer');
+    }
+
+    public function CekPemesanan($id)
+    {
+        $where = array('id_pemesanan' => $id);
+        $data['isi_pemesanan'] = $this->M_All->view_where('keranjang', $where)->result();
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/daftar_pemesanan', $data);
+		$this->load->view('admin/footer');
+    }
+
+    public function ProsesPemesanan($id)
+    {
+        $where = array('id_pemesanan' => $id);
+        $proses = array('proses' => 1, );
+        $data = array(
+            'id_pemesanan' => $id,
+            'tanggal' => date('Y-m-d'),
+            'status' => 0,//ststus 0 karena sudah di proses tetapi belum di bayar
+        );
+        $this->M_All->update('pemesanan', $where, $proses);
+        $this->M_All->insert('transaksi', $data);
+        redirect('index.php/admin/transaksi');
+    }
+
+    public function Transaksi()
+    {
+        $data['transaksi'] = $this->M_All->join_transaksi('transaksi', 'pemesanan')->result();
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/transaksi', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function DataUser()
+    {
+        // code...
     }
 }

@@ -7,11 +7,11 @@ class M_All extends CI_Model{
         return $this->db->get($table);
     }
 
-    public function select($select, $from)
+    public function select($select, $from, $with, $order)
     {
         $this->db->select($select);
         $this->db->from($from);
-        $this->db->order_by('id_transaksi', 'DESC');
+        $this->db->order_by($with, $order);
         $this->db->limit(1);
         return $this->db->get();
     }
@@ -68,6 +68,14 @@ class M_All extends CI_Model{
         $this->db->select('*');
         $this->db->from($from);
         $this->db->join($at, 'wishlist.id_barang = barang.id_barang');
+        return $this->db->get();
+    }
+
+    public function join_transaksi($from, $at)
+    {
+        $this->db->select('*');
+        $this->db->from($from);
+        $this->db->join($at, 'pemesanan.id_pemesanan = transaksi.id_pemesanan', 'left');
         return $this->db->get();
     }
 

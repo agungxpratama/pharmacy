@@ -14,7 +14,7 @@ class Transaksi extends CI_Controller
   		$this->load->model('M_All');
 
   		if($this->session->userdata('role') != "user"){
-  			redirect(base_url("index.php/home"));
+  			redirect(base_url("index.php/login"));
   		}
     }
 
@@ -26,7 +26,7 @@ class Transaksi extends CI_Controller
             'harga_obat' => $this->input->post('harga_obat'),
             'quantity' => $this->input->post('jumlah'),
             'id_user' => $this->session->userdata('id_user'),
-            'id_transaksi' => 0,
+            'id_pemesanan' => 0,
         );
         print_r($data);
         $this->M_All->insert('keranjang2', $data);
@@ -47,18 +47,15 @@ class Transaksi extends CI_Controller
             'metode_pembayaran' => $this->input->post('radio_payment'),
             'total_harga' => $this->input->post('harga_total'),
 			'quantity' => $this->input->post('jumlah_barang'),
+            'proses' => 0
 
 		);
-        $this->M_All->insert('transaksi', $data);
+        $this->M_All->insert('pemesanan', $data);
         // if ($this->M_All->insert('transaksi', $data)) {
-            $where = array('id_transaksi' => 0, );
-            $transaksi = $this->M_All->select('id_transaksi', 'transaksi')->row();
-            $data_transaksi = array('id_transaksi' => $transaksi->id_transaksi);
-            echo 'data_transaksi'.print_r($data_transaksi);
-            echo "<hr>";
-            echo 'transaksi'.print_r($transaksi);
-            echo "<hr>";
-            $this->M_All->update('keranjang2', $where, $data_transaksi);
+            $where = array('id_pemesanan' => 0, );
+            $pemesanan = $this->M_All->select('id_pemesanan', 'pemesanan', 'id_pemesanan', 'DESC')->row();
+            $data_pemesanan = array('id_pemesanan' => $pemesanan->id_pemesanan);
+            $this->M_All->update('keranjang2', $where, $data_pemesanan);
             // if ($this->M_All->update('keranjang2', $where, $data_transaksi)) {
                 $keranjang = $this->M_All->get('keranjang2')->result();
                 echo 'keranjang'.print_r($keranjang);
@@ -69,7 +66,7 @@ class Transaksi extends CI_Controller
                 $this->M_All->empty('keranjang2');
             // }
         // }
-        echo print_r($data);
+        // echo print_r($data);
         redirect(base_url('index.php/home'));
 
     }
