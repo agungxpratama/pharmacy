@@ -1,6 +1,6 @@
 <div class="home">
 		<div class="home_container">
-			<div class="home_background" style="background-image:url(<?= base_url('assets_home/')?>images/cart.jpg)"></div>
+			<div class="home_background" style="background-image:url(<?= base_url('assets_home/')?>images/contact.jpg)"></div>
 			<div class="home_content_container">
 				<div class="container">
 					<div class="row">
@@ -61,7 +61,20 @@
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Shipping</div>
-									<div class="order_list_value ml-auto">Free</div>
+									<div class="order_list_value ml-auto">Rp.
+										<?php
+										$met = $this->session->userdata('metode');
+										?>
+										<?php if ($met == 1): ?>
+											<?php echo $shipping = 25000 ?>
+										<?php elseif ($met == 2): ?>
+											<?php echo $shipping = 20000 ?>
+										<?php elseif ($met == 3): ?>
+											<?php echo $shipping = 30000 ?>
+										<?php else: ?>
+											Pilih Metode Pengiriman
+										<?php endif; ?>.00
+									</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Total</div>
@@ -185,7 +198,9 @@
             								</label>
             							</div>
             						</div>
-                                    <input type="hidden" name="harga_total" value="<?= $total ?>">
+									<input type="hidden" name="harga_total" value="<?= $total ?>">
+									<input type="hidden" name="metode_pengiriman" value="<?= $this->session->userdata('metode') ?>">
+                                    <input type="hidden" name="harga_pengiriman" value="<?= $shipping ?>">
                                     <input type="hidden" name="jumlah_barang" value="<?= $jumlah_barang ?>">
     							</form>
     						</div>

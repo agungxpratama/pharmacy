@@ -82,9 +82,14 @@
 											</g>
 										</svg>
 										<div>Cart <span>
-											(<?php echo $this->M_All->count('keranjang2') ?>)
+											(<?= $count ?>)
 										</span></div>
 									</a>
+									<?php if ($this->session->userdata('status') == "login"): ?>
+										<a href="<?= base_url('index.php/home/pesanan');?>">
+											<div>Pesanan</div>
+										</a>
+										<?php endif; ?>
 								</div>
 								<div class="search">
 									<div class="search_icon">

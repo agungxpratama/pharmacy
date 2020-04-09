@@ -2,7 +2,7 @@
 
 	<div class="home">
 		<div class="home_container">
-			<div class="home_background" style="background-image:url(<?= base_url('assets_home/')?>images/cart.jpg)"></div>
+			<div class="home_background" style="background-image:url(<?= base_url('assets_home/')?>images/contact.jpg)"></div>
 			<div class="home_content_container">
 				<div class="container">
 					<div class="row">
@@ -10,9 +10,9 @@
 							<div class="home_content">
 								<div class="breadcrumbs">
 									<ul>
-										<li><a href="index.html">Home</a></li>
-										<li><a href="categories.html">Categories</a></li>
-										<li>Shopping Cart</li>
+										<li><a href="<?= base_url('index.php/home') ?>">Beranda</a></li>
+										<!-- <li><a href="categories.html">Categories</a></li> -->
+										<li>Keranjang Belanja</li>
 									</ul>
 								</div>
 							</div>
@@ -41,7 +41,9 @@
 			<div class="row cart_items_row">
 				<!-- <?= print_r($cart); ?> -->
 				<div class="col">
-					<?php foreach ($cart as $c): ?>
+					<?php
+					$total = 0;
+					foreach ($cart as $c): ?>
 
 					<!-- Cart Item -->
 					<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
@@ -74,7 +76,6 @@
 						<div class="cart_item_total">Rp. <?= $c->harga_obat*$c->quantity ?>.00</div>
 					</div>
 					<?php
-						$total = 0;
 						$total += $c->harga_obat;
 						endforeach; ?>
 
@@ -83,10 +84,10 @@
 			<div class="row row_cart_buttons">
 				<div class="col">
 					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
-						<div class="button continue_shopping_button"><a href="<?= base_url('index.php/home/produk'); ?>">Continue shopping</a></div>
+						<div class="button continue_shopping_button"><a href="<?= base_url('index.php/home/produk'); ?>">Lanjutkan Berbelanja</a></div>
 						<div class="cart_buttons_right ml-lg-auto">
-							<div class="button clear_cart_button"><a href="#">Clear cart</a></div>
-							<div class="button update_cart_button"><a href="#">Update cart</a></div>
+							<div class="button continue_shopping_button"><a href="<?= base_url('index.php/home/emptyCart'); ?>">Kosongkan Keranjang</a></div>
+							<!-- <div class="button update_cart_button"><a href="#">Update cart</a></div> -->
 						</div>
 					</div>
 				</div>
@@ -96,26 +97,21 @@
 
 					<!-- Delivery -->
 					<div class="delivery">
-						<div class="section_title">Shipping method</div>
+						<div class="section_title">Metode Pengiriman</div>
 						<div class="section_subtitle">Select the one you want</div>
 						<div class="delivery_options">
-							<label class="delivery_option clearfix">Pengiriman Besok
-								<input type="radio" name="radio">
-								<span class="checkmark"></span>
-								<span class="delivery_price">Rp. 25000.00</span>
-							</label>
-							<label class="delivery_option clearfix">Pengiriman Normal
-								<input type="radio" name="radio">
-								<span class="checkmark"></span>
-								<span class="delivery_price">Rp. 20000.00</span>
-							</label>
-							<label class="delivery_option clearfix">Pengiriman Sekarang
-								<input type="radio" checked="checked" name="radio">
-								<span class="checkmark"></span>
-								<span class="delivery_price">Rp. 30000.00</span>
-							</label>
+							<form id="form_metode" class="" action="<?= base_url('index.php/home/updateMetode') ?>" method="post">
+								<?php foreach ($metode as $m): ?>
+									<label class="delivery_option clearfix"><?= $m->nama_metode ?>
+										<input value="<?= $m->id_m_p ?>" type="radio" name="metode_pengiriman">
+										<span class="checkmark"></span>
+										<span class="delivery_price">Rp. <?= $m->harga_metode ?>.00</span>
+									</label>
+								<?php endforeach; ?>
+							</form>
 						</div>
 					</div>
+					<div class="button checkout_button mt-4"><a href="#" onclick="document.getElementById('form_metode').submit();">Update Metode</a></div>
 
 					<!-- Coupon Code -->
 					<!-- <div class="coupon">
@@ -132,25 +128,40 @@
 
 				<div class="col-lg-6 offset-lg-2">
 					<div class="cart_total">
-						<div class="section_title">Cart total</div>
-						<div class="section_subtitle">Final info</div>
+						<div class="section_title">Total Keranjang</div>
+						<div class="section_subtitle">Info Akhir</div>
 						<div class="cart_total_container">
 							<ul>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="cart_total_title">Subtotal</div>
 									<div class="cart_total_value ml-auto">Rp. <?= $total; ?>.00</div>
 								</li>
+								<!-- <?php print_r($this->session->userdata()); ?> -->
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="cart_total_title">Shipping</div>
-									<div class="cart_total_value ml-auto">Free</div>
+									<div class="cart_total_value ml-auto">Rp.
+										<?php
+										$shipping = 0;
+										$met = $this->session->userdata('metode');
+										?>
+										<?php if ($met == 1): ?>
+											<?php echo $shipping = 25000 ?>
+										<?php elseif ($met == 2): ?>
+											<?php echo $shipping = 20000 ?>
+										<?php elseif ($met == 3): ?>
+											<?php echo $shipping = 30000 ?>
+										<?php else: ?>
+											Pilih Metode Pengiriman
+										<?php endif; ?>.00
+									</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="cart_total_title">Total</div>
-									<div class="cart_total_value ml-auto">Rp. 1000.00</div>
+									<div class="cart_total_value ml-auto">Rp. <?= $total+$shipping ?>.00</div>
 								</li>
 							</ul>
 						</div>
-						<div class="button checkout_button"><a href="<?= base_url('index.php/home/checkout') ?>">Proceed to checkout</a></div>
+						<div class="button checkout_button"><a href="<?= base_url('index.php/home/checkout') ?>">Proses ke Checkout</a></div>
 					</div>
 				</div>
 			</div>

@@ -166,22 +166,35 @@
 
 <!-- Ad -->
 
-<!-- <div class="avds_xl">
+<div class="avds_xl">
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="avds_xl_container clearfix">
-                    <div class="avds_xl_background" style="background-image:url(<?= base_url('assets_home/')?>images/avds_xl.jpg)"></div>
-                    <div class="avds_xl_content">
-                        <div class="avds_title">Amazing Devices</div>
-                        <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus.</div>
-                        <div class="avds_link avds_xl_link"><a href="categories.html">See More</a></div>
-                    </div>
-                </div>
+                <div class="newsletter_border"></div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="newsletter_content text-center">
+                    <div class="newsletter_title">Artikel</div>
+                    <div class="newsletter_text"><p>artikel kesehatan</p></div>
+                </div>
+            </div>
+            <?php foreach ($artikel as $a): ?>
+                <div class="col">
+                    <div class="avds_xl_container clearfix">
+                        <div class="avds_xl_background" style="background-image:url(<?= base_url('assets_admin/img/artikel/').$a->foto?>)"></div>
+                        <div class="avds_xl_content">
+                            <div class="avds_title"><?= $a->judul ?></div>
+                            <div class="avds_text"><?= $a->tgl_buat ?></div>
+                            <div class="avds_link avds_xl_link"><a href="<?= $a->id_artikel ?>">See More</a></div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div> -->
+</div>
 
 <!-- Icon Boxes -->
 
@@ -193,9 +206,9 @@
             <div class="col-lg-4 icon_box_col">
                 <div class="icon_box">
                     <div class="icon_box_image"><img src="<?= base_url('assets_home/')?>images/icon_1.svg" alt=""></div>
-                    <div class="icon_box_title">Free Shipping Worldwide</div>
+                    <div class="icon_box_title">Pengiriman Terjamin</div>
                     <div class="icon_box_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
+                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p> -->
                     </div>
                 </div>
             </div>
@@ -204,9 +217,9 @@
             <div class="col-lg-4 icon_box_col">
                 <div class="icon_box">
                     <div class="icon_box_image"><img src="<?= base_url('assets_home/')?>images/icon_2.svg" alt=""></div>
-                    <div class="icon_box_title">Free Returns</div>
+                    <div class="icon_box_title">Pengembailan</div>
                     <div class="icon_box_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
+                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p> -->
                     </div>
                 </div>
             </div>
@@ -215,9 +228,9 @@
             <div class="col-lg-4 icon_box_col">
                 <div class="icon_box">
                     <div class="icon_box_image"><img src="<?= base_url('assets_home/')?>images/icon_3.svg" alt=""></div>
-                    <div class="icon_box_title">24h Fast Support</div>
+                    <div class="icon_box_title">Respon Cepat Selama 24jam</div>
                     <div class="icon_box_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
+                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p> -->
                     </div>
                 </div>
             </div>
@@ -228,7 +241,7 @@
 
 <!-- Newsletter -->
 
-<div class="newsletter">
+<!-- <div class="newsletter">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -250,4 +263,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

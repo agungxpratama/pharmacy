@@ -57,7 +57,8 @@ class Auth extends CI_Controller {
 			$data_session = array(
 				'nama' => 'admin',
 				'status' => 'login',
-                'role' => 'admin'
+                'role' => 'admin',
+                'email' => $email
 				);
 			$this->session->set_userdata($data_session);
             // menerapkan data session sesuai dengan nama username

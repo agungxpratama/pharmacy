@@ -2,7 +2,7 @@
 
 	<div class="home">
 		<div class="home_container">
-			<div class="home_background" style="background-image:url(images/contact.jpg)"></div>
+			<div class="home_background" style="background-image:url(<?= base_url('assets_home/')?>images/contact.jpg)"></div>
 			<div class="home_content_container">
 				<div class="container">
 					<div class="row">

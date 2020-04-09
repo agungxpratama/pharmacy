@@ -17,7 +17,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Data Transaksi</h1>
+          <h1 class="h3 mb-0 text-gray-800">Data User</h1>
           <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" type="button" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah</a> -->
         </div>
         <!-- Content Row -->
@@ -28,7 +28,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Tabel Data Transaksi</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Tabel Data Pengguna</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -36,10 +36,10 @@
                   <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Nama Pemesan</th>
+                        <th>Nama Pengguna</th>
                         <th>No Telepon</th>
-                        <th>Tanggal</th>
-                        <th>Status</th>
+                        <th>Email</th>
+                        <th>Alamat</th>
                         <th>Action</th>
                     </tr>
                   </thead>
@@ -47,39 +47,17 @@
                     <?php
                     // print_r($transaksi);
                     $no = 1;
-                    foreach ($transaksi as $t): ?>
+                    foreach ($user as $u): ?>
                         <tr>
                             <td><?= $no++;?></td>
                             <!-- <td><?= $t->id_transaksi;?></td> -->
-                            <td><?= $t->nama_lengkap;?></td>
-                            <td><?= $t->telepon;?></td>
-                            <td><?= $t->tanggal;?></td>
+                            <td><?= $u->nama_lengkap;?></td>
+                            <td><?= $u->telepon;?></td>
+                            <td><?= $u->email;?></td>
+                            <td><?= $u->alamat;?></td>
                             <td>
-                                <?php if ($t->status == 0): ?>
-                                    <div class="badge badge-primary">
-                                        Belum dibayar
-                                    </div>
-                                <?php elseif ($t->status == 1): ?>
-                                    <div class="badge badge-primary">
-                                        Telah Dibayar
-                                    </div>
-                                    <div class="badge badge-warning">
-                                        Belum Dikirim
-                                    </div>
-                                <?php elseif ($t->status == 2): ?>
-                                    <div class="badge badge-primary">
-                                        Telah Dikirm
-                                    </div>
-                                <?php elseif ($t->status == 3): ?>
-                                    <div class="badge badge-success">
-                                        Selesai
-                                    </div>
-                                <?php endif; ?>
-                                <!-- <?= $t->status;?> -->
-                            </td>
-                            <td>
-                                <a href="<?= base_url('index.php/admin/detailTransaksi/');?><?= $t->id_transaksi;?>" class="btn btn-warning"><i class="fas fa-fw fa-search"></i> Cek</a>
-                                <!-- <a href="<?= base_url('index.php/admin/hapusObat/');?><?= $t->id_transaksi;?>" class="btn btn-danger"><i class="fas fa-fw fa-trash"></i> Hapus</a> -->
+                                <a href="<?= base_url('index.php/admin/detailTransaksi/');?><?= $u->id_user;?>" class="btn btn-warning"><i class="fas fa-fw fa-search"></i> Cek</a>
+                                <!-- <a href="<?= base_url('index.php/admin/hapusObat/');?><?= $u->id_user;?>" class="btn btn-danger"><i class="fas fa-fw fa-trash"></i> Hapus</a> -->
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -32,9 +32,12 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$data['count'] = $this->M_All->count('keranjang2');
+		// print_r($data['count']);
+		$data['artikel'] = $this->M_All->get('artikel')->result();
 		$this->load->view('home/base/head_main');
-        $this->load->view('home/base/header');
-        $this->load->view('home/index');
+        $this->load->view('home/base/header', $data);
+        $this->load->view('home/index', $data);
 		$this->load->view('home/base/footer');
 		$this->load->view('home/base/foot_main');
         // $this->load->view('auth/login');
@@ -47,10 +50,11 @@ class Home extends CI_Controller {
 
 	public function diagnosa($id)
 	{
+		$data['count'] = $this->M_All->count('keranjang2');
 		$where = array('kategori' => $id, );
 		$data['obat'] = $this->M_All->view_where('obat', $where)->result();
 		$this->load->view('home/base/head_categories');
-		$this->load->view('home/base/header');
+		$this->load->view('home/base/header', $data);
 		$this->load->view('home/produk', $data);
 		$this->load->view('home/base/footer');
 		$this->load->view('home/base/foot_categories');
@@ -58,9 +62,10 @@ class Home extends CI_Controller {
 
 	public function produk()
 	{
+		$data['count'] = $this->M_All->count('keranjang2');
 		$data['obat'] = $this->M_All->get('obat')->result();
 		$this->load->view('home/base/head_categories');
-		$this->load->view('home/base/header');
+		$this->load->view('home/base/header', $data);
 		$this->load->view('home/produk', $data);
 		$this->load->view('home/base/footer');
 		$this->load->view('home/base/foot_categories');
@@ -69,10 +74,11 @@ class Home extends CI_Controller {
 
 	public function detailProduk($id)
 	{
+		$data['count'] = $this->M_All->count('keranjang2');
 		$where = array('id_obat' => $id);
 		$data['obat'] = $this->M_All->view_where('obat', $where)->row();
 		$this->load->view('home/base/head_produk');
-		$this->load->view('home/base/header');
+		$this->load->view('home/base/header', $data);
 		$this->load->view('home/view_produk', $data);
 		$this->load->view('home/base/footer');
 		$this->load->view('home/base/foot_produk');
@@ -80,19 +86,27 @@ class Home extends CI_Controller {
 
 	public function cart()
 	{
+		$data['count'] = $this->M_All->count('keranjang2');
+		$data['metode'] = $this->M_All->get('metode_pengiriman')->result();
 		$data['cart'] = $this->M_All->join_cart('keranjang2', 'obat')->result();
 		$this->load->view('home/base/head_cart');
-		$this->load->view('home/base/header');
+		$this->load->view('home/base/header', $data);
 		$this->load->view('home/cart', $data);
 		$this->load->view('home/base/footer');
 		$this->load->view('home/base/foot_cart');
 	}
 
-	public function clearCart()
+	public function clearCart($id)
 	{
-		$where = array('id_obat' => $id);
-		$this->M_All->delete($where,'obat');
-		redirect('index.php/admin/obat');
+		$where = array('id_keranjang' => $id);
+		$this->M_All->delete($where,'kernajang2');
+		redirect('index.php/home/cart');
+	}
+
+	public function emptyCart()
+	{
+		$this->M_All->empty('keranjang2');
+		redirect('index.php/home/cart');
 	}
 
 	public function checkOut()
@@ -100,11 +114,12 @@ class Home extends CI_Controller {
 		// if($this->session->userdata('role') != "user"){
   		// 	redirect(base_url("index.php/home"));
   		// }
+		$data['count'] = $this->M_All->count('keranjang2');
 		$where = array('id_user' => $this->session->userdata('id_user'), );
 		$data['user'] = $this->M_All->view_where('user', $where)->row();
 		$data['checkout'] = $this->M_All->join_cart('keranjang2', 'obat')->result();
 		$this->load->view('home/base/head_checkout');
-		$this->load->view('home/base/header');
+		$this->load->view('home/base/header', $data);
 		$this->load->view('home/checkout', $data);
 		$this->load->view('home/base/footer');
 		$this->load->view('home/base/foot_checkout');
@@ -123,12 +138,52 @@ class Home extends CI_Controller {
 		);
 	}
 
+	public function updateMetode()
+	{
+		$data = array(
+			'metode' => $this->input->post('metode_pengiriman'),
+		);
+		echo $this->input->post('metode_pengiriman');
+		$this->session->set_userdata($data);
+		redirect(base_url('index.php/home/cart'));
+	}
+
 	public function contact()
 	{
+		$data['count'] = $this->M_All->count('keranjang2');
 		$this->load->view('home/base/head_contact');
-		$this->load->view('home/base/header');
+		$this->load->view('home/base/header', $data);
 		$this->load->view('home/contact');
 		$this->load->view('home/base/footer');
 		$this->load->view('home/base/foot_contact');
+	}
+
+	public function Pesanan()
+	{
+		$data['count'] = $this->M_All->count('keranjang2');
+		$where = array('id_user' => $this->session->userdata('id_user'), );
+		$data['transaksi'] = $this->M_All->join_detail_transaksi('transaksi', 'pemesanan', $where)->result();
+		$this->load->view('home/base/head_checkout');
+		$this->load->view('home/base/header', $data);
+		$this->load->view('home/order', $data);
+		$this->load->view('home/base/footer');
+		$this->load->view('home/base/foot_checkout');
+	}
+
+	public function detailPesanan($id)
+	{
+		$data['count'] = $this->M_All->count('keranjang2');
+		$where = array(
+			'id_user' => $this->session->userdata('id_user'),
+			'id_transaksi' => $id,
+		);
+		$data['transaksi'] = $this->M_All->join_detail_transaksi('transaksi', 'pemesanan', $where)->row();
+		$list = array('id_pemesanan' => $data['transaksi']->id_pemesanan, );
+		$data['pesanan'] = $this->M_All->view_where('keranjang', $list)->result();
+		$this->load->view('home/base/head_checkout');
+		$this->load->view('home/base/header', $data);
+		$this->load->view('home/detail_order', $data);
+		$this->load->view('home/base/footer');
+		$this->load->view('home/base/foot_checkout');
 	}
 }

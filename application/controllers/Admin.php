@@ -32,8 +32,11 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
+        $data['transaksi'] = $this->M_All->count('transaksi');
+        $data['pesanan'] = $this->M_All->count('pemesanan');
+        $data['user'] = $this->M_All->count('user');
         $this->load->view('admin/header');
-        $this->load->view('admin/index');
+        $this->load->view('admin/index', $data);
 		$this->load->view('admin/footer');
 	}
 
@@ -148,10 +151,52 @@ class Admin extends CI_Controller {
 
     public function Artikel()
     {
+        $data['artikel'] = $this->M_All->get('artikel')->result();
         $this->load->view('admin/header');
-        $this->load->view('admin/artikel/');
+        $this->load->view('admin/artikel/index', $data);
 		$this->load->view('admin/footer');
     }
+
+    public function tambahArtikel()
+    {
+        $config['upload_path']          = './assets_admin/img/artikel/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['overwrite']        = true;
+		$config['max_size']             = 1024;
+		// $config['max_width']            = 1024;
+		// $config['max_height']           = 768;
+
+        $this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload('foto')){
+			$this->session->set_flashdata('error', $this->upload->display_errors());
+			$data = array('error' => $this->upload->display_errors());
+			// $this->load->view('pengelolaan/gudang', $data);
+		}else{
+			$this->session->set_flashdata('success', 'Berhasil di Upload');
+			$data = array('success' => $this->upload->data('foto'));
+			// $this->load->view('pengelolaan/gudang', $data);
+            $foto = $this->upload->data('orig_name');
+            $data = array(
+                'foto' => $foto,
+                'judul' => $this->input->post('judul',true),
+                'isi' => $this->input->post('isi',true),
+                'tgl_buat' => date('Y-d=m'),
+            );
+            if ($this->M_All->insert('artikel', $data) != true) {
+                redirect('index.php/admin/artikel');
+            }else {
+                redirect('index.php/admin/artikel');
+            }
+		}
+    }
+
+    public function HapusArtikel($id)
+	{
+		$where = array('id_artikel' => $id);
+		$this->M_All->delete($where,'artikel');
+		redirect('index.php/admin/artikel');
+	}
 
     public function Categories()
     {
@@ -195,13 +240,43 @@ class Admin extends CI_Controller {
     public function Transaksi()
     {
         $data['transaksi'] = $this->M_All->join_transaksi('transaksi', 'pemesanan')->result();
+        // print_r($data);
         $this->load->view('admin/header');
         $this->load->view('admin/etc/transaksi', $data);
         $this->load->view('admin/footer');
     }
 
+    public function detailTransaksi($id)
+    {
+        $where = array('id_transaksi' => $id, );
+        $data['transaksi'] = $this->M_All->join_detail_transaksi('transaksi', 'pemesanan', $where)->row();
+        $list = array('id_pemesanan' => $data['transaksi']->id_pemesanan, );
+        $data['pesanan'] = $this->M_All->view_where('keranjang', $list)->result();
+        // print_r($data['transaksi']);
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/detail_transaksi', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function updateResi()
+    {
+        $id_transaksi = $this->input->post('id_transaksi');
+        $where = array('id_transaksi' => $id_transaksi, );
+        $data = array(
+            'resi' => $this->input->post('resi'),
+            'status' => 2,
+        );
+        $this->M_All->update('transaksi', $where, $data);
+        redirect('index.php/admin/detailTransaksi/'.$id_transaksi);
+    }
+
     public function DataUser()
     {
-        // code...
+        $data['user'] = $this->M_All->get('user')->result();
+        // print_r($data);
+        $this->load->view('admin/header');
+        // print_r($data);
+        $this->load->view('admin/etc/data_user', $data);
+        $this->load->view('admin/footer');
     }
 }

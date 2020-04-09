@@ -79,6 +79,15 @@ class M_All extends CI_Model{
         return $this->db->get();
     }
 
+    public function join_detail_transaksi($from, $at, $where)
+    {
+        $this->db->select('*');
+        $this->db->from($from);
+        $this->db->join($at, 'pemesanan.id_pemesanan = transaksi.id_pemesanan', 'left');
+        $this->db->where($where);
+        return $this->db->get();
+    }
+
     function count($where)
     {
         return $this->db->count_all_results($where);

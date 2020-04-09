@@ -113,10 +113,21 @@
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Transaksi</h6>
             <a class="collapse-item" href="<?= base_url('index.php/admin/pemesanan'); ?>">Pemesanan</a>
-            <a class="collapse-item" href="<?= base_url('index.php/admin/transaksi'); ?>">Data Transaksi</a>
+            <!-- <a class="collapse-item" href="<?= base_url('index.php/admin/transaksi'); ?>">Data Transaksi</a> -->
             <!-- <a class="collapse-item" href="blank.html">Blank Page</a> -->
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Konsumen</h6>
+            <a class="collapse-item" href="<?= base_url('index.php/admin/dataUser'); ?>">Data Konsumen</a>
+
           </div>
         </div>
+      </li>
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('index.php/admin/transaksi'); ?>">
+          <i class="fas fa-fw fa-file"></i>
+          <span>Transaksi</span></a>
       </li>
 
       <!-- Nav Item - Charts -->
@@ -125,6 +136,7 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Statistik</span></a>
       </li>
+
 
       <!-- Nav Item - Tables -->
       <!-- <li class="nav-item">
