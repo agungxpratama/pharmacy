@@ -113,6 +113,7 @@
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Transaksi</h6>
             <a class="collapse-item" href="<?= base_url('index.php/admin/pemesanan'); ?>">Pemesanan</a>
+            <a class="collapse-item" href="<?= base_url('index.php/admin/tracking'); ?>">Tracking</a>
             <!-- <a class="collapse-item" href="<?= base_url('index.php/admin/transaksi'); ?>">Data Transaksi</a> -->
             <!-- <a class="collapse-item" href="blank.html">Blank Page</a> -->
             <div class="collapse-divider"></div>

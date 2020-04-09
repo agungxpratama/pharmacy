@@ -279,4 +279,13 @@ class Admin extends CI_Controller {
         $this->load->view('admin/etc/data_user', $data);
         $this->load->view('admin/footer');
     }
+
+    public function Tracking()
+    {
+        $data['transaksi'] = $this->M_All->join_transaksi('transaksi', 'pemesanan')->result();
+        // print_r($data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/tracking', $data);
+        $this->load->view('admin/footer');
+    }
 }

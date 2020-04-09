@@ -45,7 +45,27 @@ class Home extends CI_Controller {
 
 	public function artikel()
 	{
-		// code...
+		$data['count'] = $this->M_All->count('keranjang2');
+		// print_r($data['count']);
+		$data['artikel'] = $this->M_All->get('artikel')->result();
+		$this->load->view('home/base/head_main');
+        $this->load->view('home/base/header', $data);
+        $this->load->view('home/artikel', $data);
+		$this->load->view('home/base/footer');
+		$this->load->view('home/base/foot_main');
+	}
+
+	public function detailArtikel($id)
+	{
+		$data['count'] = $this->M_All->count('keranjang2');
+		// print_r($data['count']);
+		$where = array('id_artikel' => $id, );
+		$data['artikel'] = $this->M_All->view_where('artikel', $where)->row();
+		$this->load->view('home/base/head_produk');
+        $this->load->view('home/base/header', $data);
+        $this->load->view('home/detail_artikel', $data);
+		$this->load->view('home/base/footer');
+		$this->load->view('home/base/foot_produk');
 	}
 
 	public function diagnosa($id)
