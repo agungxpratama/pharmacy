@@ -56,7 +56,31 @@
                             <td><?= $u->email;?></td>
                             <td><?= $u->alamat;?></td>
                             <td>
-                                <a href="<?= base_url('index.php/admin/detailTransaksi/');?><?= $u->id_user;?>" class="btn btn-warning"><i class="fas fa-fw fa-search"></i> Cek</a>
+                                <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#modal_user<?= $u->id_user ?>"><i class="fas fa-fw fa-search"></i> Cek</a>
+                                <div class="modal fade" tabindex="-1" role="dialog" id="modal_user<?= $u->id_user ?>">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title">Data User</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <div class="form-group">
+                                              <label for="FormControl">Nama</label>
+                                              <p id="FormControl"><?= $u->nama_lengkap;?></p>
+                                              <!-- <input type="text" class="form-control bg-light border-1 small" placeholder="Masukan Nomor Resi Pengiriman" name="resi" aria-label="noREsi" aria-describedby="basic-addon2"> -->
+                                          </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                          <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- <a href="<?= base_url('index.php/admin/detailTransaksi/');?><?= $u->id_user;?>" class="btn btn-warning"><i class="fas fa-fw fa-search"></i> Cek</a> -->
                                 <!-- <a href="<?= base_url('index.php/admin/hapusObat/');?><?= $u->id_user;?>" class="btn btn-danger"><i class="fas fa-fw fa-trash"></i> Hapus</a> -->
                             </td>
                         </tr>

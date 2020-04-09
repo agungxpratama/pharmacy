@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2020 at 01:46 AM
+-- Generation Time: Apr 09, 2020 at 01:17 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -80,8 +80,16 @@ CREATE TABLE `artikel` (
   `id_artikel` int(20) NOT NULL,
   `judul` varchar(30) NOT NULL,
   `foto` text NOT NULL,
-  `isi` text NOT NULL
+  `isi` text NOT NULL,
+  `tgl_buat` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `artikel`
+--
+
+INSERT INTO `artikel` (`id_artikel`, `judul`, `foto`, `isi`, `tgl_buat`) VALUES
+(1, 'Kopi', 'Coffee.jpg', '123', '2020-09-04');
 
 -- --------------------------------------------------------
 
@@ -191,6 +199,27 @@ INSERT INTO `login_user` (`id_user`, `email`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `metode_pengiriman`
+--
+
+CREATE TABLE `metode_pengiriman` (
+  `id_m_p` int(11) NOT NULL,
+  `nama_metode` varchar(255) NOT NULL,
+  `harga_metode` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `metode_pengiriman`
+--
+
+INSERT INTO `metode_pengiriman` (`id_m_p`, `nama_metode`, `harga_metode`) VALUES
+(1, 'Pengiriman Besok', 25000),
+(2, 'Pengiriman Normal', 20000),
+(3, 'Pengiriman Sekarang', 30000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `obat`
 --
 
@@ -241,15 +270,17 @@ CREATE TABLE `pemesanan` (
   `id_user` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `total_harga` int(11) NOT NULL,
-  `proses` int(11) NOT NULL
+  `proses` int(11) NOT NULL,
+  `id_m_p` int(11) NOT NULL,
+  `harga_pengiriman` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `pemesanan`
 --
 
-INSERT INTO `pemesanan` (`id_pemesanan`, `nama_lengkap`, `telepon`, `alamat`, `tanggal`, `kota`, `kode_pos`, `kecamatan`, `kelurahan`, `provinsi`, `metode_pembayaran`, `email`, `id_user`, `quantity`, `total_harga`, `proses`) VALUES
-(1, 'qwerty', '822827102', 'qwertyuiop', '2020-04-05', '', '', '', '', '0', 'Treansfer Bank', 'qwe@gmail.com', 0, 3, 45000, 0);
+INSERT INTO `pemesanan` (`id_pemesanan`, `nama_lengkap`, `telepon`, `alamat`, `tanggal`, `kota`, `kode_pos`, `kecamatan`, `kelurahan`, `provinsi`, `metode_pembayaran`, `email`, `id_user`, `quantity`, `total_harga`, `proses`, `id_m_p`, `harga_pengiriman`) VALUES
+(1, 'qwerty', '822827102', 'qwertyuiop', '2020-04-05', '', '', '', '', '0', 'Treansfer Bank', 'qwe@gmail.com', 1, 3, 45000, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -262,15 +293,16 @@ CREATE TABLE `transaksi` (
   `id_pemesanan` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `status` int(11) NOT NULL,
-  `bukti` varchar(255) NOT NULL
+  `bukti` varchar(255) NOT NULL,
+  `resi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_transaksi`, `id_pemesanan`, `tanggal`, `status`, `bukti`) VALUES
-(1, 1, '2020-04-05', 0, '');
+INSERT INTO `transaksi` (`id_transaksi`, `id_pemesanan`, `tanggal`, `status`, `bukti`, `resi`) VALUES
+(1, 1, '2020-04-05', 3, 'Coffee.jpg', 'JNEREG1212394');
 
 -- --------------------------------------------------------
 
@@ -399,6 +431,12 @@ ALTER TABLE `login_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
+-- Indexes for table `metode_pengiriman`
+--
+ALTER TABLE `metode_pengiriman`
+  ADD PRIMARY KEY (`id_m_p`);
+
+--
 -- Indexes for table `obat`
 --
 ALTER TABLE `obat`
@@ -447,7 +485,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `id_artikel` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_artikel` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `detail_transaksi`
@@ -471,13 +509,19 @@ ALTER TABLE `keranjang`
 -- AUTO_INCREMENT for table `keranjang2`
 --
 ALTER TABLE `keranjang2`
-  MODIFY `id_keranjang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_keranjang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `login_user`
 --
 ALTER TABLE `login_user`
   MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `metode_pengiriman`
+--
+ALTER TABLE `metode_pengiriman`
+  MODIFY `id_m_p` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `obat`
@@ -495,7 +539,7 @@ ALTER TABLE `pemesanan`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transaksi_beli`
