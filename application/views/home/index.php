@@ -181,16 +181,18 @@
                 </div>
             </div>
             <?php foreach ($artikel as $a): ?>
-                <div class="col-md-5">
-                    <div class="avds_xl_container clearfix">
-                        <div class="avds_xl_background" style="background-image:url(<?= base_url('assets_admin/img/artikel/').$a->foto?>)"></div>
-                        <div class="avds_xl_content">
-                            <div class="avds_title"><?= $a->judul ?></div>
-                            <div class="avds_text"><?= $a->tgl_buat ?></div>
-                            <div class="avds_link avds_xl_link"><a href="detailartikel/<?= $a->id_artikel ?>">See More</a></div>
+                <a href="<?= base_url('index.php/home/') ?>detailartikel/<?= $a->id_artikel ?>">
+                    <div class="col-md-4 pt-3">
+                        <div class="avds_xl_container clearfix">
+                            <div class="avds_xl_background" style="background-image:url(<?= base_url('assets_admin/img/artikel/').$a->foto?>)"></div>
+                            <div class="p-3 mt-5 m-2 bg-dark">
+                                <div class="avds_title"><?= $a->judul ?></div>
+                                <div class="avds_text"><?= $a->tgl_buat ?></div>
+                                <div class="avds_link avds_xl_link"><a href="<?= base_url('index.php/home/') ?>detailartikel/<?= $a->id_artikel ?>">See More</a></div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             <?php endforeach; ?>
         </div>
     </div>

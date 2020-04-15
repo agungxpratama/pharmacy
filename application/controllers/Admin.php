@@ -181,7 +181,7 @@ class Admin extends CI_Controller {
                 'foto' => $foto,
                 'judul' => $this->input->post('judul',true),
                 'isi' => $this->input->post('isi',true),
-                'tgl_buat' => date('Y-d=m'),
+                'tgl_buat' => date('Y-d-m'),
             );
             if ($this->M_All->insert('artikel', $data) != true) {
                 redirect('index.php/admin/artikel');
