@@ -34,7 +34,12 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-43">
-						<b><a href="<?= base_url('index.php/') ?> ">Pharmacy Kids.</a></b>
+						<!-- <b>Pharmacy Kids.</b> -->
+						<b><a href="<?= base_url('index.php/') ?> ">
+							<h1>
+								Pharmacy Kids.
+							</h1>
+						</a></b>
 					</span>
 					<span class="login100-form-title p-b-43">
 						Login Sebagai

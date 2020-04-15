@@ -16,7 +16,7 @@
                                 <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
                                     <div class="home_slider_title">Pharmacy Kids.</div>
                                     <div class="home_slider_subtitle">Solusi terbaik untuk anda menagani si kecil yang sakit.</div>
-                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
+                                    <!-- <div class="button button_light home_button"><a href="#">Shop Now</a></div> -->
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
                                     <div class="home_slider_title">Pharmacy Kids.</div>
                                     <div class="home_slider_subtitle">Tidak perlu khawatir ketika si kecil jatuh sakit.</div>
-                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
+                                    <!-- <div class="button button_light home_button"><a href="#">Shop Now</a></div> -->
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                 <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
                                     <div class="home_slider_title">Pharmacy Kids.</div>
                                     <div class="home_slider_subtitle">Kami hadir untuk memudahkan anda ketika si kecil sakit.</div>
-                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
+                                    <!-- <div class="button button_light home_button"><a href="#">Shop Now</a></div> -->
                                 </div>
                             </div>
                         </div>
@@ -181,13 +181,13 @@
                 </div>
             </div>
             <?php foreach ($artikel as $a): ?>
-                <div class="col">
+                <div class="col-md-5">
                     <div class="avds_xl_container clearfix">
                         <div class="avds_xl_background" style="background-image:url(<?= base_url('assets_admin/img/artikel/').$a->foto?>)"></div>
                         <div class="avds_xl_content">
                             <div class="avds_title"><?= $a->judul ?></div>
                             <div class="avds_text"><?= $a->tgl_buat ?></div>
-                            <div class="avds_link avds_xl_link"><a href="<?= $a->id_artikel ?>">See More</a></div>
+                            <div class="avds_link avds_xl_link"><a href="detailartikel/<?= $a->id_artikel ?>">See More</a></div>
                         </div>
                     </div>
                 </div>

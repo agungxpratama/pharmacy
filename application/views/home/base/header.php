@@ -50,22 +50,7 @@
 									<!-- <li><a href="#">Accessories</a></li> -->
 									<!-- <li><a href="#">Offers</a></li> -->
                                     <li><a href="<?= base_url('index.php/home/contact');?>">Kontak</a></li>
-                                    <?php
-                                        if($this->session->userdata('status') != "login"){
-                                            // redirect(base_url("login"));
-                                    ?>
-                                    <li class="btn btn-light border"><a href="<?= base_url('index.php/Auth/') ?>">Login</a></li>
-                                    <?php
-                                        }
-                                    ?>
-                                    <?php
-                                        if($this->session->userdata('status') == "login"){
-                                            // redirect(base_url("login"));
-                                    ?>
-                                    <li class="btn btn-danger"><a href="<?= base_url('index.php/Auth/logout') ?>" class="text-white">Logout</a></li>
-                                    <?php
-                                        }
-                                    ?>
+
 								</ul>
 							</nav>
 							<div class="header_extra ml-auto">
@@ -81,17 +66,35 @@
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
 											</g>
 										</svg>
-										<div>Cart <span>
+										<div>Keranjang<span>
 											(<?= $count ?>)
 										</span></div>
 									</a>
 									<?php if ($this->session->userdata('status') == "login"): ?>
-										<a href="<?= base_url('index.php/home/pesanan');?>">
+										<a href="<?= base_url('index.php/home/pesanan');?>" class="pl-2">
 											<div>Pesanan</div>
 										</a>
 										<?php endif; ?>
 								</div>
-								<div class="search">
+								<div class="shopping_cart pl-3">
+									<?php
+									if($this->session->userdata('status') != "login"){
+										// redirect(base_url("login"));
+										?>
+										<li class="btn btn-light border"><a href="<?= base_url('index.php/Auth/') ?>">Login</a></li>
+										<?php
+									}
+									?>
+									<?php
+									if($this->session->userdata('status') == "login"){
+										// redirect(base_url("login"));
+										?>
+										<li class="btn btn-danger"><a href="<?= base_url('index.php/Auth/logout') ?>" class="text-white">Logout</a></li>
+										<?php
+									}
+									?>
+								</div>
+								<!-- <div class="search">
 									<div class="search_icon">
 										<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 										viewBox="0 0 475.084 475.084" style="enable-background:new 0 0 475.084 475.084;"
@@ -111,8 +114,8 @@
 										</g>
 									</svg>
 									</div>
-								</div>
-								<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
+								</div> -->
+								<!-- <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div> -->
 							</div>
 						</div>
 					</div>

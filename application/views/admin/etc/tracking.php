@@ -61,10 +61,10 @@
                                     <div class="badge badge-secondary">
                                         Telah Dibayar
                                     </div>
-                                    -
                                     <div class="badge badge-secondary">
                                         Belum Dikirim
                                     </div>
+                                    -
                                     <div class="badge badge-secondary">
                                         Telah Dikirm
                                     </div>
@@ -80,10 +80,10 @@
                                     <div class="badge badge-primary">
                                         Telah Dibayar
                                     </div>
-                                    -
-                                    <div class="badge badge-secondary">
+                                    <div class="badge badge-warning">
                                         Belum Dikirim
                                     </div>
+                                    -
                                     <div class="badge badge-secondary">
                                         Telah Dikirm
                                     </div>
@@ -99,10 +99,10 @@
                                     <div class="badge badge-secondary">
                                         Telah Dibayar
                                     </div>
-                                    -
-                                    <div class="badge badge-warning">
+                                    <div class="badge badge-secondary">
                                         Belum Dikirim
                                     </div>
+                                    -
                                     <div class="badge badge-primary">
                                         Telah Dikirm
                                     </div>
@@ -118,10 +118,10 @@
                                     <div class="badge badge-secondary">
                                         Telah Dibayar
                                     </div>
-                                    -
                                     <div class="badge badge-secondary">
                                         Belum Dikirim
                                     </div>
+                                    -
                                     <div class="badge badge-secondary">
                                         Telah Dikirm
                                     </div>

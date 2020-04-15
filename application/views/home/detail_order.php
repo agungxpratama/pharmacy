@@ -33,7 +33,9 @@
                 <div class="col-lg-6">
                     <div class="billing checkout_section">
                         <div class="section_title">ID Transaksi : <?= $transaksi->id_transaksi ?>
-                            <?php if ($transaksi->status == 1): ?>
+                            <?php if ($transaksi->status == 0): ?>
+                                Belum Dibayar
+                            <?php elseif ($transaksi->status == 1): ?>
                                 Telah Dibayar
                             <?php elseif ($transaksi->status == 2): ?>
                                 Sedang Diperjalanan

@@ -34,7 +34,9 @@
                     <div class="col-lg-6">
                         <div class="billing checkout_section">
                             <div class="section_title">ID Transaksi : <?= $t->id_transaksi ?>
-                                <?php if ($t->status == 1): ?>
+                                <?php if ($t->status == 0): ?>
+                                    Belum Dibayar
+                                <?php elseif ($t->status == 1): ?>
                                     Telah Dibayar
                                 <?php elseif ($t->status == 2): ?>
                                     Sedang Diperjalanan
@@ -48,17 +50,105 @@
                                 <p class="text">Rp. <?= $t->total_harga ?>.00</p>
                             </div>
                             <?php if ($t->status == 0): ?>
-                                <div class="checkout_form_container">
-                                    <div class="section_subtitle">Masukan Bukti Transaksi</div>
-                                    <form action="<?= base_url('index.php/transaksi/simpanBukti') ?>" id="form_bukti" class="checkout_form" method="post" enctype="multipart/form-data">
+                                <div class="badge badge-primary">
+                                    Belum dibayar
+                                </div>
+                                -
+                                <div class="badge badge-secondary">
+                                    Telah Dibayar
+                                </div>
+                                <div class="badge badge-secondary">
+                                    Belum Dikirim
+                                </div>
+                                -
+                                <div class="badge badge-secondary">
+                                    Telah Dikirm
+                                </div>
+                                -
+                                <div class="badge badge-secondary">
+                                    Selesai
+                                </div>
+                            <?php elseif ($t->status == 1): ?>
+                                <div class="badge badge-secondary">
+                                    Belum dibayar
+                                </div>
+                                -
+                                <div class="badge badge-primary">
+                                    Telah Dibayar
+                                </div>
+                                <div class="badge badge-warning">
+                                    Belum Dikirim
+                                </div>
+                                -
+                                <div class="badge badge-secondary">
+                                    Telah Dikirm
+                                </div>
+                                -
+                                <div class="badge badge-secondary">
+                                    Selesai
+                                </div>
+                            <?php elseif ($t->status == 2): ?>
+                                <div class="badge badge-secondary">
+                                    Belum dibayar
+                                </div>
+                                -
+                                <div class="badge badge-secondary">
+                                    Telah Dibayar
+                                </div>
+                                <div class="badge badge-secondary">
+                                    Belum Dikirim
+                                </div>
+                                -
+                                <div class="badge badge-primary">
+                                    Telah Dikirm
+                                </div>
+                                -
+                                <div class="badge badge-secondary">
+                                    Selesai
+                                </div>
+                            <?php elseif ($t->status == 3): ?>
+                                <div class="badge badge-secondary">
+                                    Belum dibayar
+                                </div>
+                                -
+                                <div class="badge badge-secondary">
+                                    Telah Dibayar
+                                </div>
+                                <div class="badge badge-secondary">
+                                    Belum Dikirim
+                                </div>
+                                -
+                                <div class="badge badge-secondary">
+                                    Telah Dikirm
+                                </div>
+                                -
+                                <div class="badge badge-success">
+                                    Selesai
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($t->status == 0): ?>
+                                <form action="<?= base_url('index.php/transaksi/simpanBukti') ?>" id="form_bukti" class="checkout_form" method="post" enctype="multipart/form-data">
+                                    <div class="checkout_form_container">
+                                        <div class="section_subtitle">Masukan Bukti Transaksi</div>
+                                        <div>
+                                            <!-- Province -->
+                                            <label for="checkout_province">No Rekening a.n Ibu Wanda Afifah</label>
+                                            <select id="checkout_province" class="dropdown_item_select checkout_input" require="required" name="trf_rekening">
+                                                <option value="0">Pilih Rekening</option>
+                                                <option value="BCA">BCA - 097812783</option>
+                                                <!-- <option value="">BNI</option> -->
+                                                <option value="BRI">BRI - 345678957</option>
+                                                <option value="Mandiri">Mandiri - 345678957</option>
+                                            </select>
+                                        </div>
                                         <div>
                                             <!-- Company -->
                                             <label for="checkout">Bukti Transaksi</label>
                                             <input type="file" id="checkout" class="checkout_input" name="foto_bayar">
                                             <input type="hidden" name="id_transaksi" value="<?= $t->id_transaksi ?>">
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             <?php endif; ?>
 
                         </div>

@@ -9,7 +9,7 @@
                     <div class="col">
                         <div class="home_content">
                             <div class="home_title">Produk<span>.</span></div>
-                            <div class="home_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div>
+                            <!-- <div class="home_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div> -->
                         </div>
                     </div>
                 </div>
@@ -27,8 +27,8 @@
 
                 <!-- Product Sorting -->
                 <div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
-                    <div class="results">Showing <span>12</span> results</div>
-                    <div class="sorting_container ml-md-auto">
+                    <!-- <div class="results">Showing <span>12</span> results</div> -->
+                    <!-- <div class="sorting_container ml-md-auto">
                         <div class="sorting">
                             <ul class="item_sorting">
                                 <li>
@@ -42,7 +42,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -103,13 +103,13 @@
 
 
                 </div>
-                <div class="product_pagination">
+                <!-- <div class="product_pagination">
                     <ul>
                         <li class="active"><a href="#">01.</a></li>
                         <li><a href="#">02.</a></li>
                         <li><a href="#">03.</a></li>
                     </ul>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -125,7 +125,7 @@
                 <div class="newsletter_border"></div>
             </div>
         </div> -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <div class="newsletter_content text-center">
                     <div class="newsletter_title">Subscribe to our newsletter</div>
@@ -138,6 +138,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

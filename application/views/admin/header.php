@@ -43,11 +43,11 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
+      <!-- <li class="nav-item active">
         <a class="nav-link" href="<?= base_url('index.php/admin')?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
-      </li>
+      </li> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -57,12 +57,24 @@
         Data
       </div>
 
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('index.php/admin/obat'); ?>">
+          <i class="fas fa-fw fa-pills"></i>
+          <span>Obat</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('index.php/admin/Artikel'); ?>">
+          <i class="fas fa-fw fa-newspaper"></i>
+          <span>Artikel</span></a>
+      </li>
+
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-pills"></i>
           <span>Obat</span>
-        </a>
+        </a> -->
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Opsi:</h6>
@@ -75,10 +87,10 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-newspaper"></i>
           <span>Artikel</span>
-        </a>
+        </a> -->
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Opsi:</h6>
@@ -173,7 +185,7 @@
               </button>
 
               <!-- Topbar Search -->
-              <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+              <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                   <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                   <div class="input-group-append">
@@ -182,7 +194,7 @@
                     </button>
                   </div>
                 </div>
-              </form>
+              </form> -->
 
               <!-- Topbar Navbar -->
               <ul class="navbar-nav ml-auto">
@@ -209,13 +221,13 @@
 
                 <!-- Nav Item - Alerts -->
                 <li class="nav-item dropdown no-arrow mx-1">
-                  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell fa-fw"></i>
+                  <!-- <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                    <!-- <i class="fas fa-bell fa-fw"></i> -->
                     <!-- Counter - Alerts -->
-                    <span class="badge badge-danger badge-counter">3+</span>
-                  </a>
+                    <!-- <span class="badge badge-danger badge-counter">3+</span> -->
+                  <!-- </a> -->
                   <!-- Dropdown - Alerts -->
-                  <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                  <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                     <h6 class="dropdown-header">
                       Alerts Center
                     </h6>
@@ -254,17 +266,17 @@
                     </a>
                     <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                   </div>
-                </li>
+                </li> -->
 
                 <!-- Nav Item - Messages -->
                 <li class="nav-item dropdown no-arrow mx-1">
-                  <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-envelope fa-fw"></i>
+                  <!-- <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                    <!-- <i class="fas fa-envelope fa-fw"></i> -->
                     <!-- Counter - Messages -->
-                    <span class="badge badge-danger badge-counter">7</span>
-                  </a>
+                    <!-- <span class="badge badge-danger badge-counter">7</span> -->
+                  <!-- </a> -->
                   <!-- Dropdown - Messages -->
-                  <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                  <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                     <h6 class="dropdown-header">
                       Message Center
                     </h6>
@@ -310,18 +322,22 @@
                     </a>
                     <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                   </div>
-                </li>
+                </li> -->
 
                 <div class="topbar-divider d-none d-sm-block"></div>
 
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
-                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="dropdown-item" href="<?= base_url('index.php/Auth/logout') ?>" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i>
+                        Logout
+                    </a>
+                  <!-- <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata("nama"); ?></span>
                     <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-                  </a>
+                  </a> -->
                   <!-- Dropdown - User Information -->
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">
                       <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                       Profile
@@ -339,7 +355,7 @@
                       <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                       Logout
                     </a>
-                  </div>
+                  </div> -->
                 </li>
 
               </ul>

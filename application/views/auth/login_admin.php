@@ -34,7 +34,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="<?= base_url('index.php/Auth/actionLoginAdmin');?>" method="post">
 					<span class="login100-form-title p-b-43">
-						Login for Admin
+						Login Admin
 					</span>
 
 
@@ -59,7 +59,7 @@
 
 				</form>
 
-				<div class="login100-more" style="background-image: url('<?= base_url('assets_auth/')?>images/bg-01.jpg');">
+				<div class="login100-more" style="background-image: url(<?= base_url('assets_home/')?>images/pharmacy/home_slider_2.jpg);">
 				</div>
 			</div>
 		</div>

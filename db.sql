@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2020 at 01:17 PM
+-- Generation Time: Apr 10, 2020 at 01:10 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -158,7 +158,8 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`db_keranjang`, `id_keranjang`, `id_obat`, `nama_obat`, `harga_obat`, `quantity`, `id_user`, `id_pemesanan`) VALUES
-(1, 1, 8, 'Panadol', 15000, 3, 1, 1);
+(1, 1, 8, 'Panadol', 15000, 3, 1, 1),
+(2, 3, 8, 'Panadol', 15000, 2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -280,7 +281,8 @@ CREATE TABLE `pemesanan` (
 --
 
 INSERT INTO `pemesanan` (`id_pemesanan`, `nama_lengkap`, `telepon`, `alamat`, `tanggal`, `kota`, `kode_pos`, `kecamatan`, `kelurahan`, `provinsi`, `metode_pembayaran`, `email`, `id_user`, `quantity`, `total_harga`, `proses`, `id_m_p`, `harga_pengiriman`) VALUES
-(1, 'qwerty', '822827102', 'qwertyuiop', '2020-04-05', '', '', '', '', '0', 'Treansfer Bank', 'qwe@gmail.com', 1, 3, 45000, 1, 0, 0);
+(1, 'qwerty', '822827102', 'qwertyuiop', '2020-04-05', '', '', '', '', '0', 'Treansfer Bank', 'qwe@gmail.com', 1, 3, 45000, 1, 0, 0),
+(2, 'qwerty', '822827102', 'qwertyuiop', '0000-00-00', '', '', '', '', '0', 'Treansfer Bank', 'qwe@gmail.com', 1, 2, 30000, 1, 1, 25000);
 
 -- --------------------------------------------------------
 
@@ -294,15 +296,17 @@ CREATE TABLE `transaksi` (
   `tanggal` date NOT NULL,
   `status` int(11) NOT NULL,
   `bukti` varchar(255) NOT NULL,
-  `resi` varchar(255) NOT NULL
+  `resi` varchar(255) NOT NULL,
+  `bank` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_transaksi`, `id_pemesanan`, `tanggal`, `status`, `bukti`, `resi`) VALUES
-(1, 1, '2020-04-05', 3, 'Coffee.jpg', 'JNEREG1212394');
+INSERT INTO `transaksi` (`id_transaksi`, `id_pemesanan`, `tanggal`, `status`, `bukti`, `resi`, `bank`) VALUES
+(1, 1, '2020-04-05', 3, 'Coffee.jpg', 'JNEREG1212394', ''),
+(3, 2, '2020-04-10', 1, 'Coffee.jpg', '', 'BCA');
 
 -- --------------------------------------------------------
 
@@ -503,13 +507,13 @@ ALTER TABLE `diagnosa`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `db_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `db_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `keranjang2`
 --
 ALTER TABLE `keranjang2`
-  MODIFY `id_keranjang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_keranjang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `login_user`
@@ -533,13 +537,13 @@ ALTER TABLE `obat`
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `transaksi_beli`

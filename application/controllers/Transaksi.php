@@ -94,7 +94,8 @@ class Transaksi extends CI_Controller
 			// $this->load->view('pengelolaan/gudang', $data);
             $foto = $this->upload->data('orig_name');
 			$data = array(
-				'bukti' => $foto,
+                'bukti' => $foto,
+				'bank' => $this->input->post('trf_rekening'),
 				'status' => 1,
 			);
 			$where = array('id_transaksi' => $this->input->post('id_transaksi'), );

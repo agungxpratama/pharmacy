@@ -34,7 +34,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="<?= base_url('index.php/Auth/actionRegister');?>" method="post">
 					<span class="login100-form-title p-b-43">
-						Register for User
+						Register User
 					</span>
 
                     <div class="wrap-input100 validate-input" data-validate = "Nama Harus terisi">
