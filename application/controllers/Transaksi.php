@@ -50,7 +50,8 @@ class Transaksi extends CI_Controller
             'quantity' => $this->input->post('jumlah_barang'),
             'id_m_p' => $this->input->post('metode_pengiriman'),
             'harga_pengiriman' => $this->input->post('harga_pengiriman'),
-			'quantity' => $this->input->post('jumlah_barang'),
+            'quantity' => $this->input->post('jumlah_barang'),
+			'tanggal' => date('Y-m-d'),
             'proses' => 0
 
 		);

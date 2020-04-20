@@ -157,6 +157,14 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/footer');
     }
 
+    public function viewArtikel($id)
+    {
+        $where = array('id_artikel' => $id, );
+        $data['artikel'] = $this->M_All->view_where('artikel', $where)->row();
+        $this->load->view('admin/header');
+        $this->load->view('admin/artikel/detail', $data);
+        $this->load->view('admin/footer');}
+
     public function tambahArtikel()
     {
         $config['upload_path']          = './assets_admin/img/artikel/';
