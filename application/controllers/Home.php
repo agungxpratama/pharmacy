@@ -84,6 +84,7 @@ class Home extends CI_Controller {
 	{
 		$data['count'] = $this->M_All->count('keranjang2');
 		$data['obat'] = $this->M_All->get('obat')->result();
+		$data['rating'] = $this->M_All->get('rating')->result();
 		$this->load->view('home/base/head_categories');
 		$this->load->view('home/base/header', $data);
 		$this->load->view('home/produk', $data);
@@ -192,6 +193,12 @@ class Home extends CI_Controller {
 
 	public function detailPesanan($id)
 	{
+		if($this->session->userdata('role') != "user"){
+  			redirect(base_url("index.php/auth"));
+  		}
+		$pre = array('id_transaksi' => $id, );
+		$data['this_id_transaksi'] = $id;
+		$data['rating'] = $this->M_All->view_where('rating', $pre)->result();
 		$data['count'] = $this->M_All->count('keranjang2');
 		$where = array(
 			'id_user' => $this->session->userdata('id_user'),

@@ -115,4 +115,18 @@ class Transaksi extends CI_Controller
         $this->M_All->update('transaksi', $where, $data);
         redirect('index.php/home/pesanan');
     }
+
+    public function beriRatting()
+    {
+        $this_id_transaksi = $this->input->post('id_transaksi');
+        $data = array(
+            'rating' => $this->input->post('rating'),
+            'id_obat' => $this->input->post('id_obat'),
+            'tgl_rating' => date('Y-m-d'),
+            'id_user' => $this->input->post('id_user'),
+            'id_transaksi' => $this->input->post('id_transaksi'),
+        );
+        $this->M_All->insert('rating', $data);
+        redirect('index.php/home/detailPesanan/'.$this_id_transaksi);
+    }
 }

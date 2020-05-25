@@ -11,5 +11,6 @@
 
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>styles/checkout.css">
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>styles/checkout_responsive.css">
+<link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>styles/star_rating.css">
 </head>
 <body>

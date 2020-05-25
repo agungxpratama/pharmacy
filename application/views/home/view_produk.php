@@ -47,8 +47,17 @@
 
 						<!-- In Stock -->
 						<div class="in_stock_container">
-							<div class="availability">Availability:</div>
+							<div class="availability">Availability :</div>
 							<span>In Stock</span>
+						</div>
+
+						<div class="in_stock_container">
+							<div class="availability">Rating :</div>
+							<i class="fa fa-star text-warning"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
 						</div>
 						<div class="details_text">
                             <h5 class="font-weight-bold">Kategori</h5>

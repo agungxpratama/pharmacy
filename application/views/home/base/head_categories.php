@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>styles/categories.css">
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>styles/categories_responsive.css">
+<link rel="stylesheet" type="text/css" href="<?= base_url('assets_home/')?>styles/star_rating.css">
 
 </head>
 <body>
