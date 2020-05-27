@@ -125,8 +125,35 @@ class Transaksi extends CI_Controller
             'tgl_rating' => date('Y-m-d'),
             'id_user' => $this->input->post('id_user'),
             'id_transaksi' => $this->input->post('id_transaksi'),
+            'comment' => $this->input->post('comment'),
         );
         $this->M_All->insert('rating', $data);
         redirect('index.php/home/detailPesanan/'.$this_id_transaksi);
+    }
+
+    public function tambahWishlist()
+    {
+        $data = array(
+            'id_obat' => $this->input->post('id_obat'),
+            'nama_obat' => $this->input->post('nama_obat'),
+            'harga_obat' => $this->input->post('harga_obat'),
+            'id_user' => $this->session->userdata('id_user'),
+        );
+        print_r($data);
+        $this->M_All->insert('favorite', $data);
+        redirect(base_url('index.php/home/produk'));
+    }
+
+    public function Favorite()
+    {
+        $data['count'] = $this->M_All->count('keranjang2');
+        $where = array('id_user' => $this->session->userdata('id_user'), );
+		$data['favorite'] = $this->M_All->join_favorite('favorite', $where)->result();
+		$data['rating'] = $this->M_All->get('rating')->result();
+		$this->load->view('home/base/head_categories');
+		$this->load->view('home/base/header', $data);
+		$this->load->view('home/favorite', $data);
+		$this->load->view('home/base/footer');
+		$this->load->view('home/base/foot_categories');
     }
 }

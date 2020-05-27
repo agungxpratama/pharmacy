@@ -19,6 +19,7 @@
 											<li><a href="<?= base_url('index.php/home/produk');?>">Produk</a></li>
 											<li><a href="<?= base_url('index.php/home/cart');?>">Cart</a></li>
 											<li><a href="<?= base_url('index.php/home/checkOut');?>">Check out</a></li>
+											<li><a href="<?= base_url('index.php/transaksi/favorite');?>">Favorite</a></li>
 											<!-- <li><a href="">Contact</a></li> -->
 										</ul>
 									</li>

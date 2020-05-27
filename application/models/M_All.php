@@ -100,4 +100,22 @@ class M_All extends CI_Model{
 
         return $query;
     }
+
+    public function join_favorite($at, $where)
+    {
+        $this->db->select('*');
+        $this->db->from($at);
+        $this->db->join('obat', 'favorite.id_obat = obat.id_obat');
+        $this->db->where($where);
+        return $this->db->get();
+    }
+
+    public function join_comment($at, $where)
+    {
+        $this->db->select('*');
+        $this->db->from($at);
+        $this->db->join('obat', 'favorite.id_obat = obat.id_obat');
+        $this->db->where($where);
+        return $this->db->get();
+    }
 }

@@ -27,8 +27,8 @@
 
 	<div class="checkout">
 		<div class="container">
-            <?php print_r($transaksi) ?>
-            <?php print_r($rating) ?>
+            <!-- <?php print_r($transaksi) ?>
+            <?php print_r($rating) ?> -->
             <div class="row">
                 <!-- Billing Info -->
                 <div class="col-lg-6">
@@ -82,35 +82,19 @@
                                 foreach ($pesanan as $p): ?>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="order_list_title"><?= $p->nama_obat.' X '.$p->quantity ?>
-                                            <?php foreach ($rating as $r): ?>
-                                                <?php if ($r->id_transaksi != $this_id_transaksi): ?>
-                                                    <form class="" action="<?= base_url('index.php/transaksi/beriRatting') ?>" method="post">
-                                                        <!-- <br>Beri Nilai -->
+                                            <?php if ($transaksi->status == 3): ?>
+                                                <?php foreach ($rating as $r): ?>
+                                                    <?php if ($r->id_transaksi == $this_id_transaksi): ?>
                                                         <br>
-                                                        <fieldset class="rating">
-                                                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                                                            <!-- <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label> -->
-                                                            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                                                            <!-- <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label> -->
-                                                            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                                                            <!-- <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label> -->
-                                                            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                                                            <!-- <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label> -->
-                                                            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                                                            <!-- <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label> -->
-                                                        </fieldset>
-                                                        <input type="hidden" name="id_obat" value="<?= $p->id_obat ?>">
-                                                        <input type="hidden" name="id_user" value="<?= $p->id_user ?>">
-                                                        <input type="hidden" name="id_transaksi" value="<?= $this_id_transaksi ?>">
-                                                        <br>
-                                                        <input type="submit" name="beri_nilai" value="Beri Penilaian" class="btn btn-warning btn-sm">
-                                                    </form>
-                                                <?php elseif ($r->id_transaksi == $this_id_transaksi): ?>
-                                                    <br>
-                                                    <i class="fa fa-star text-warning"></i>
-                                                    <?= $r->rating ?>
-                                                <?php endif; ?>
-                                            <?php endforeach; ?>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <?= $r->rating ?>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                                <br>
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#example<?= $p->id_pemesanan ?>">
+                                                    Beri Ulasan
+                                                </button>
+                                            <?php endif; ?>
                                             <!-- <i class="fa fa-star"></i> -->
                                         </div>
                                         <div class="order_list_value ml-auto">Rp. <?= $total_harga_obat = $p->harga_obat*$p->quantity ?>.00</div>
@@ -141,3 +125,4 @@
 
 		</div>
 	</div>
+    <?php $this->load->view('home/modal_comment') ?>

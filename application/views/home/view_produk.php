@@ -35,13 +35,26 @@
 							<div class="details_image_thumbnail" data-image="<?= base_url('assets_home/')?>images/details_3.jpg"><img src="images/details_3.jpg" alt=""></div>
 							<div class="details_image_thumbnail" data-image="<?= base_url('assets_home/')?>images/details_4.jpg"><img src="images/details_4.jpg" alt=""></div>
 						</div> -->
+						<div class="button cart_button">
+							<form id="wishlist" class="" action="<?= base_url('index.php/transaksi/tambahWishlist') ?>" method="post">
+								<input type="hidden" name="id_obat" value="<?= $obat->id_obat ?>">
+								<input type="hidden" name="harga_obat" value="<?= $obat->harga_obat; ?>">
+								<input type="hidden" name="nama_obat" value="<?= $obat->nama_obat; ?>">
+							</form>
+							<!-- <a href="#" onclick="document.getElementById('form_cart').submit();">Add to cart</a> -->
+							<a href="#" onclick="document.getElementById('wishlist').submit();">
+								<i class="fa fa-plus"></i> ke Favorite <i class="fa fa-heart text-danger"></i>
+							</a>
+						</div>
 					</div>
 				</div>
 
 				<!-- Product Content -->
 				<div class="col-lg-6">
 					<div class="details_content">
-						<div class="details_name"><?= $obat->nama_obat ?><br></div>
+						<div class="details_name"><?= $obat->nama_obat ?>
+							<br>
+						</div>
 						<!-- <div class="details_discount">$890</div> -->
 						<div class="details_price">Rp. <?= $obat->harga_obat ?></div>
 
@@ -111,15 +124,27 @@
 			</div>
 
 			<div class="row description_row">
-				<!-- <div class="col">
+				<div class="col">
 					<div class="description_title_container">
-						<div class="description_title">Description</div>
-						<div class="reviews_title"><a href="#">Reviews <span>(1)</span></a></div>
+						<!-- <div class="description_title">Description</div> -->
+						<div class="description_title">Ulasan</div>
+						<!-- <div class="reviews_title"><a href="#">Reviews <span>(1)</span></a></div> -->
 					</div>
 					<div class="description_text">
-						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>
+						<?php foreach ($rating as $r): ?>
+							<div class="row">
+								<div class="col-md-1">
+									<p>
+										<i class="fa fa-star text-warning"></i> <?= $r->rating ?>
+									</p>
+								</div>
+								<div class="col">
+									<p><?= $r->comment ?></p>
+								</div>
+							</div>
+						<?php endforeach; ?>
 					</div>
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</div>

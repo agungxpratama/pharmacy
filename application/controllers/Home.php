@@ -73,6 +73,7 @@ class Home extends CI_Controller {
 		$data['count'] = $this->M_All->count('keranjang2');
 		$where = array('kategori' => $id, );
 		$data['obat'] = $this->M_All->view_where('obat', $where)->result();
+		$data['rating'] = $this->M_All->get('rating')->result();
 		$this->load->view('home/base/head_categories');
 		$this->load->view('home/base/header', $data);
 		$this->load->view('home/produk', $data);
@@ -98,6 +99,8 @@ class Home extends CI_Controller {
 		$data['count'] = $this->M_All->count('keranjang2');
 		$where = array('id_obat' => $id);
 		$data['obat'] = $this->M_All->view_where('obat', $where)->row();
+		$pre = array('id_obat' => $id, );
+		$data['rating'] = $this->M_All->view_where('rating', $pre)->result();
 		$this->load->view('home/base/head_produk');
 		$this->load->view('home/base/header', $data);
 		$this->load->view('home/view_produk', $data);
