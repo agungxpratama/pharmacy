@@ -96,6 +96,7 @@ class Home extends CI_Controller {
 
 	public function detailProduk($id)
 	{
+		$data['rating'] = $this->M_All->get('rating')->result();
 		$data['count'] = $this->M_All->count('keranjang2');
 		$where = array('id_obat' => $id);
 		$data['obat'] = $this->M_All->view_where('obat', $where)->row();

@@ -136,6 +136,16 @@
     									<label for="checkout_zipcode">Kode Pos*</label>
     									<input type="text" id="checkout_zipcode" class="checkout_input" required="required" placeholder="Kode Pos" name="kode_pos">
     								</div>
+									<div>
+    									<!-- Kelurahan -->
+    									<label for="checkout_zipcode">Kelurahan*</label>
+    									<input type="text" id="checkout_kelurahan" class="checkout_input" required="required" placeholder="Kelurahan" name="kelurahan">
+    								</div>
+									<div>
+    									<!-- Kecamatan -->
+    									<label for="checkout_zipcode">Kecamatan*</label>
+    									<input type="text" id="checkout_kelurahan" class="checkout_input" required="required" placeholder="Kelurahan" name="kelurahan">
+    								</div>
     								<div>
     									<!-- City / Town -->
     									<label for="checkout_city">Kota*</label>

@@ -66,11 +66,67 @@
 
 						<div class="in_stock_container">
 							<div class="availability">Rating :</div>
-							<i class="fa fa-star text-warning"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
+							<?php
+							$jumlah = 0;
+							$hasil = 0;
+							?>
+							<?php foreach ($rating as $r): ?>
+								<?php if ($r->id_obat == $obat->id_obat): ?>
+									<?php
+										$total = $r->rating;
+									 ?>
+									<!-- <?= $r->rating ?> -->
+								<?php endif; ?>
+								<?php
+									$hasil += $total;
+									$jumlah++;
+								?>
+							<?php endforeach; ?>
+							<?php
+							$rata = $hasil/$jumlah;
+							?>
+							<!-- <?= $hasil ?> -->
+							<!-- <br> -->
+							<!-- <?= $jumlah ?> -->
+							<!-- <br> -->
+							<?= $rata ?>
+							<?php if (floor($rata) == 5): ?>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star text-warning"></i>
+							<?php elseif (floor($rata) == 4): ?>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star"></i>
+							<?php elseif (floor($rata) == 3): ?>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							<?php elseif (floor($rata) == 2): ?>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							<?php elseif (floor($rata) == 1): ?>
+								<i class="fa fa-star text-warning"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							<?php elseif (floor($rata) == 0): ?>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							<?php endif; ?>
 						</div>
 						<div class="details_text">
                             <h5 class="font-weight-bold">Kategori</h5>
