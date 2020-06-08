@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2020 at 08:35 AM
+-- Generation Time: Jun 08, 2020 at 12:27 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -138,6 +138,27 @@ CREATE TABLE `diagnosa` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `favorite`
+--
+
+CREATE TABLE `favorite` (
+  `id_favorite` int(11) NOT NULL,
+  `id_obat` int(11) NOT NULL,
+  `nama_obat` varchar(255) NOT NULL,
+  `harga_obat` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `favorite`
+--
+
+INSERT INTO `favorite` (`id_favorite`, `id_obat`, `nama_obat`, `harga_obat`, `id_user`) VALUES
+(1, 8, 'Panadol', 15000, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `keranjang`
 --
 
@@ -175,6 +196,13 @@ CREATE TABLE `keranjang2` (
   `id_user` int(11) NOT NULL,
   `id_pemesanan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `keranjang2`
+--
+
+INSERT INTO `keranjang2` (`id_keranjang`, `id_obat`, `nama_obat`, `harga_obat`, `quantity`, `id_user`, `id_pemesanan`) VALUES
+(4, 8, 'Panadol', 15000, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -304,7 +332,8 @@ CREATE TABLE `rating` (
 --
 
 INSERT INTO `rating` (`id_rating`, `rating`, `id_obat`, `tgl_rating`, `id_user`, `id_transaksi`, `comment`) VALUES
-(1, 5, 8, '2020-05-21', 2, 1, '');
+(5, 5, 8, '2020-05-26', 1, 1, 'bagus'),
+(6, 3, 8, '2020-05-21', 2, 1, 'bagus');
 
 -- --------------------------------------------------------
 
@@ -329,50 +358,6 @@ CREATE TABLE `transaksi` (
 INSERT INTO `transaksi` (`id_transaksi`, `id_pemesanan`, `tanggal`, `status`, `bukti`, `resi`, `bank`) VALUES
 (1, 1, '2020-04-05', 3, 'Coffee.jpg', 'JNEREG1212394', ''),
 (3, 2, '2020-04-10', 1, 'Coffee.jpg', '', 'BCA');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaksi_beli`
---
-
-CREATE TABLE `transaksi_beli` (
-  `id_transaksi` int(10) NOT NULL,
-  `nama_lengkap` varchar(50) NOT NULL,
-  `telepon` varchar(15) NOT NULL,
-  `alamat` text NOT NULL,
-  `tanggal` date NOT NULL,
-  `kota` varchar(100) NOT NULL,
-  `kode_pos` varchar(10) NOT NULL,
-  `kecamatan` varchar(20) NOT NULL,
-  `kelurahan` varchar(20) NOT NULL,
-  `provinsi` varchar(20) NOT NULL,
-  `metode_pembayaran` varchar(10) NOT NULL,
-  `id_user` int(10) NOT NULL,
-  `id_keranjang` int(10) NOT NULL,
-  `id_obat` int(5) NOT NULL,
-  `nama_obat` varchar(25) NOT NULL,
-  `quantity` varchar(15) NOT NULL,
-  `harga_obat` varchar(20) NOT NULL,
-  `total_harga` varchar(20) NOT NULL,
-  `pengiriman` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `transaksi_beli`
---
-
-INSERT INTO `transaksi_beli` (`id_transaksi`, `nama_lengkap`, `telepon`, `alamat`, `tanggal`, `kota`, `kode_pos`, `kecamatan`, `kelurahan`, `provinsi`, `metode_pembayaran`, `id_user`, `id_keranjang`, `id_obat`, `nama_obat`, `quantity`, `harga_obat`, `total_harga`, `pengiriman`) VALUES
-(5, 'Ridho udut Wanda popo', 'bhjbjhbjhb', 'wdawd', '0000-00-00', 'bhjbjh', 'jhbjh', 'bjhbjhb', '', 'bjh', '', 0, 0, 1, 'obh', '6', '655', '33930', '30000'),
-(6, 'Wanda', '08463546453', 'asdfhjkl;', '0000-00-00', 'jujuju', '5646', 'sdfghjkl', '', 'wdwad', '', 0, 0, 1, 'obh', '5', '655', '28275', '25000'),
-(7, 'Wanda', '08463546453', 'asdfhjkl;', '0000-00-00', 'jujuju', '5646', 'sdfghjkl', '', 'wdwad', '', 0, 0, 1, 'obh', '5', '655', '28275', '25000'),
-(8, 'Wanda', '08463546453', 'asdfhjkl;', '0000-00-00', 'jujuju', '5646', 'sdfghjkl', '', 'wdwad', '', 0, 0, 1, 'obh', '5', '655', '28275', '25000'),
-(9, 'Wanda', '08463546453', 'jalan sukabirus', '0000-00-00', 'bandung', '2312', 'sukapura', '', 'jawa barat', '', 0, 0, 1, 'obh', '8', '655', '30240', '25000'),
-(10, 't', '56745', 'jalan sukabirus', '0000-00-00', 'dwad', '2312', 'gj', '', 'juu', '', 0, 0, 1, 'obh', '1', '655', '30655', '30000'),
-(11, 'Wanda', '56745', 'jalan sukabirus', '0000-00-00', 'jujuju', '34435', 'sukapura', '', 'jawa barat', '', 0, 0, 1, 'obh', '1', '655', '30655', '30000'),
-(12, 'sadfgh', 'zsfhb', 'jszfxhbj', '0000-00-00', 'szjhb', 'szdhj', 'szghj', '', 'zsfxdhb', '', 0, 0, 2, 'PANADOL ANAK-ANAK 0-1 DRO', '5', '30000', '170000', '20000'),
-(13, 'Wanda', '08463546453', 'jalan sukabirus', '0000-00-00', 'bandung', '34435', 'sukapura', '', 'jawa barat', '', 0, 0, 3, 'PANADOL ANAK-ANAK 0-1 DRO', '4', '500000', '2030000', '30000'),
-(14, 'Wanda', '081272636484', 'jalan soreang', '0000-00-00', 'bandung', '5646', 'sukapura', '', 'jawa barat', '', 0, 0, 3, 'PANADOL ANAK-ANAK 0-1 DRO', '1', '500000', '530000', '30000');
 
 -- --------------------------------------------------------
 
@@ -436,6 +421,13 @@ ALTER TABLE `diagnosa`
   ADD KEY `id_obat` (`id_obat`);
 
 --
+-- Indexes for table `favorite`
+--
+ALTER TABLE `favorite`
+  ADD PRIMARY KEY (`id_favorite`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indexes for table `keranjang`
 --
 ALTER TABLE `keranjang`
@@ -448,7 +440,8 @@ ALTER TABLE `keranjang`
 --
 ALTER TABLE `keranjang2`
   ADD PRIMARY KEY (`id_keranjang`),
-  ADD KEY `id_transaksi` (`id_pemesanan`);
+  ADD KEY `id_transaksi` (`id_pemesanan`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `login_user`
@@ -492,15 +485,6 @@ ALTER TABLE `transaksi`
   ADD KEY `id_pemesanan` (`id_pemesanan`);
 
 --
--- Indexes for table `transaksi_beli`
---
-ALTER TABLE `transaksi_beli`
-  ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_user_2` (`id_user`),
-  ADD KEY `id_keranjang` (`id_keranjang`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -535,6 +519,12 @@ ALTER TABLE `diagnosa`
   MODIFY `id_diagnosa` int(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `favorite`
+--
+ALTER TABLE `favorite`
+  MODIFY `id_favorite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
@@ -544,7 +534,7 @@ ALTER TABLE `keranjang`
 -- AUTO_INCREMENT for table `keranjang2`
 --
 ALTER TABLE `keranjang2`
-  MODIFY `id_keranjang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_keranjang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `login_user`
@@ -574,19 +564,13 @@ ALTER TABLE `pemesanan`
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
   MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `transaksi_beli`
---
-ALTER TABLE `transaksi_beli`
-  MODIFY `id_transaksi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -617,6 +601,24 @@ ALTER TABLE `detail_transaksi`
 ALTER TABLE `diagnosa`
   ADD CONSTRAINT `diagnosa_ibfk_2` FOREIGN KEY (`id_artikel`) REFERENCES `artikel` (`id_artikel`),
   ADD CONSTRAINT `diagnosa_ibfk_3` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id_obat`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `favorite`
+--
+ALTER TABLE `favorite`
+  ADD CONSTRAINT `favorite_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Constraints for table `keranjang`
+--
+ALTER TABLE `keranjang`
+  ADD CONSTRAINT `keranjang_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Constraints for table `keranjang2`
+--
+ALTER TABLE `keranjang2`
+  ADD CONSTRAINT `keranjang2_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
 -- Constraints for table `rating`

@@ -144,7 +144,7 @@
 									<div>
     									<!-- Kecamatan -->
     									<label for="checkout_zipcode">Kecamatan*</label>
-    									<input type="text" id="checkout_kelurahan" class="checkout_input" required="required" placeholder="Kelurahan" name="kelurahan">
+    									<input type="text" id="checkout_kelurahan" class="checkout_input" required="required" placeholder="Kecamatan" name="kecamatan">
     								</div>
     								<div>
     									<!-- City / Town -->
