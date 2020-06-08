@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2020 at 12:27 PM
+-- Generation Time: Jun 08, 2020 at 03:36 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -89,51 +89,6 @@ CREATE TABLE `artikel` (
 
 INSERT INTO `artikel` (`id_artikel`, `judul`, `foto`, `isi`, `tgl_buat`) VALUES
 (1, 'Kopi', 'Coffee.jpg', '123', '2020-09-04');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bayar`
---
-
-CREATE TABLE `bayar` (
-  `id_bayar` int(10) NOT NULL,
-  `tanggal` date NOT NULL,
-  `jumlah_bayar` int(20) NOT NULL,
-  `id_transaksi` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `detail_transaksi`
---
-
-CREATE TABLE `detail_transaksi` (
-  `id_detailtransaksi` int(5) NOT NULL,
-  `nama_obat` varchar(30) NOT NULL,
-  `harga_obat` int(20) NOT NULL,
-  `quantity` int(30) NOT NULL,
-  `pengiriman` varchar(10) NOT NULL,
-  `total_harga` int(30) NOT NULL,
-  `id_transaksi` int(10) NOT NULL,
-  `id_obat` int(10) NOT NULL,
-  `nama_lengkap` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `diagnosa`
---
-
-CREATE TABLE `diagnosa` (
-  `id_diagnosa` int(20) NOT NULL,
-  `nama_diagnosa` varchar(20) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `id_artikel` int(10) NOT NULL,
-  `id_obat` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -398,29 +353,6 @@ ALTER TABLE `artikel`
   ADD PRIMARY KEY (`id_artikel`);
 
 --
--- Indexes for table `bayar`
---
-ALTER TABLE `bayar`
-  ADD PRIMARY KEY (`id_bayar`),
-  ADD KEY `id_transaksi` (`id_transaksi`);
-
---
--- Indexes for table `detail_transaksi`
---
-ALTER TABLE `detail_transaksi`
-  ADD PRIMARY KEY (`id_detailtransaksi`),
-  ADD KEY `id_transaksi` (`id_transaksi`),
-  ADD KEY `id_obat` (`id_obat`);
-
---
--- Indexes for table `diagnosa`
---
-ALTER TABLE `diagnosa`
-  ADD PRIMARY KEY (`id_diagnosa`),
-  ADD KEY `id_artikel` (`id_artikel`),
-  ADD KEY `id_obat` (`id_obat`);
-
---
 -- Indexes for table `favorite`
 --
 ALTER TABLE `favorite`
@@ -507,18 +439,6 @@ ALTER TABLE `artikel`
   MODIFY `id_artikel` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `detail_transaksi`
---
-ALTER TABLE `detail_transaksi`
-  MODIFY `id_detailtransaksi` int(5) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `diagnosa`
---
-ALTER TABLE `diagnosa`
-  MODIFY `id_diagnosa` int(20) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
@@ -581,26 +501,6 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `bayar`
---
-ALTER TABLE `bayar`
-  ADD CONSTRAINT `bayar_ibfk_1` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi_beli` (`id_transaksi`);
-
---
--- Constraints for table `detail_transaksi`
---
-ALTER TABLE `detail_transaksi`
-  ADD CONSTRAINT `detail_transaksi_ibfk_2` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi_beli` (`id_transaksi`),
-  ADD CONSTRAINT `detail_transaksi_ibfk_3` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id_obat`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `diagnosa`
---
-ALTER TABLE `diagnosa`
-  ADD CONSTRAINT `diagnosa_ibfk_2` FOREIGN KEY (`id_artikel`) REFERENCES `artikel` (`id_artikel`),
-  ADD CONSTRAINT `diagnosa_ibfk_3` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id_obat`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `favorite`
