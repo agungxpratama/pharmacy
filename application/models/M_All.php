@@ -25,31 +25,31 @@ class M_All extends CI_Model{
     }
 
     public function view_where($table,$where)
-	{
-		return $this->db->get_where($table,$where);
-	}
+    {
+        return $this->db->get_where($table,$where);
+    }
 
-	public function insert($table,$data)
-	{
-		$this->db->insert($table,$data);
-	}
+    public function insert($table,$data)
+    {
+        $this->db->insert($table,$data);
+    }
 
     public function empty($table)
     {
         $this->db->empty_table($table);
     }
 
-	public function update($table,$where,$data)
-	{
-		$this->db->where($where);
-		$this->db->update($table,$data);
-	}
+    public function update($table,$where,$data)
+    {
+        $this->db->where($where);
+        $this->db->update($table,$data);
+    }
 
-	public function delete($where,$table)
-	{
-		$this->db->where($where);
-		$this->db->delete($table);
-	}
+    public function delete($where,$table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
 
     function cek_login($table,$where){
         return $this->db->get_where($table,$where);
@@ -76,6 +76,15 @@ class M_All extends CI_Model{
         $this->db->select('*');
         $this->db->from($from);
         $this->db->join($at, 'pemesanan.id_pemesanan = transaksi.id_pemesanan', 'left');
+        return $this->db->get();
+    }
+
+    public function join_transaksi_where($from, $at, $where)
+    {
+        $this->db->select('*');
+        $this->db->from($from);
+        $this->db->join($at, 'pemesanan.id_pemesanan = transaksi.id_pemesanan', 'left');
+        $this->db->where($where);
         return $this->db->get();
     }
 
@@ -116,6 +125,16 @@ class M_All extends CI_Model{
         $this->db->from($at);
         $this->db->join('obat', 'favorite.id_obat = obat.id_obat');
         $this->db->where($where);
+        return $this->db->get();
+    }
+
+    public function join_buy_again($where)
+    {
+        $this->db->select('*');
+		$this->db->from('transaksi');
+		// $this->db->join('pemesanan', 'pemesanan.id_pemesanan = transaksi.id_pemesanan');
+		$this->db->join('keranjang', 'keranjang.id_pemesanan = transaksi.id_pemesanan');
+		$this->db->where($where);
         return $this->db->get();
     }
 }

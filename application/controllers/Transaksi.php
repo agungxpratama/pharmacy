@@ -18,9 +18,12 @@ class Transaksi extends CI_Controller
   		}
     }
 
-    public function simpanTransaksi()
+   public function simpanTransaksi()
     {
-        $data = array(
+        $quantity = $this->input->POST('jumlah',true);
+        $id_obat = $this->input->POST('id_obat',true);
+        if ($quantity >= "1") {
+           $data = array(
             'id_obat' => $this->input->post('id_obat'),
             'nama_obat' => $this->input->post('nama_obat'),
             'harga_obat' => $this->input->post('harga_obat'),
@@ -31,6 +34,15 @@ class Transaksi extends CI_Controller
         print_r($data);
         $this->M_All->insert('keranjang2', $data);
         redirect(base_url('index.php/home/produk'));
+        } else {
+            $this->session->set_flashdata('msg',
+                    '<div class="alert alert-success">
+                        <h4>Gagal</h4>
+                        <p>Anda harus membeli setidak nya 1 pcs, terimakasih.</p>
+                    </div>');
+                redirect(base_url('index.php/home/detailProduk/'.$id_obat));
+        }
+
     }
 
     public function simpanCheckout()
@@ -157,5 +169,10 @@ class Transaksi extends CI_Controller
 		$this->load->view('home/favorite', $data);
 		$this->load->view('home/base/footer');
 		$this->load->view('home/base/foot_categories');
+    }
+
+    public function report()
+    {
+        // code...
     }
 }

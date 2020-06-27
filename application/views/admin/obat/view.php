@@ -18,7 +18,6 @@
             </div>
             <form action="<?= base_url()?>index.php/admin/editObat/<?= $o->id_obat?>" method="post" enctype="multipart/form-data">
             <div class="modal-body">
-              <p>Modal body text goes here.</p>
                   <div class="form-group">
                       <label for="exampleFormControlInput1">Nama Obat</label>
                       <input type="text" class="form-control bg-light border-1 small" placeholder="Nama Obat" name="nama_obat" aria-label="namaObat" aria-describedby="basic-addon2" value="<?= $o->nama_obat?>">
@@ -32,8 +31,8 @@
                       <input type="text" class="form-control bg-light border-1 small" placeholder="Kategori" name="kategori" aria-label="kategori" aria-describedby="basic-addon2" value="<?= $o->kategori?>">
                   </div>
                   <div class="form-group">
-                      <label for="exampleFormControlInput1">Merek</label>
-                      <input type="text" class="form-control bg-light border-1 small" placeholder="Merek" name="merek" aria-label="merek" aria-describedby="basic-addon2" value="<?= $o->merek?>">
+                      <label for="exampleFormControlInput1">Dosis</label>
+                      <input type="text" class="form-control bg-light border-1 small" placeholder="Dosis" name="merek" aria-label="merek" aria-describedby="basic-addon2" value="<?= $o->merek?>">
                   </div>
                   <div class="form-group">
                       <label for="exampleFormControlInput1">Jenis Obat</label>
@@ -79,8 +78,8 @@
                   </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
           </form>
           </div>
@@ -96,6 +95,31 @@
             <div class="row">
                 <div class="col-4">
                     <img class="w-100" src="<?= base_url('assets_admin/img/foto/'.$o->foto); ?>" alt="img-fotoObat">
+                    <button class="btn btn-info" type="button" name="button" data-toggle="modal" data-target="#stockModal">+ Stock (<?= $o->stock ?>)</button>
+                    <div class="modal fade" tabindex="-1" role="dialog" id="stockModal">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                              <form action="<?= base_url()?>index.php/admin/updateStock/<?= $o->id_obat?>" method="post">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title">Tambah Stok Obat</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="form-group">
+                                          <label for="exampleFormControlInput1">Stock Obat</label>
+                                          <input type="number" class="form-control bg-light border-1 small" name="stock" value="<?= $o->stock ?>" placeholder="Jumlah...">
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                      <button type="submit" class="btn btn-primary">Simpan</button>
+                                  </div>
+                              </form>
+                          </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-8">
                     <h5>Nama Obat</h5>
@@ -118,7 +142,7 @@
                             <p class="text"><?= $o->efek_samping; ?></p>
                         </div>
                         <div class="col-4 border-left">
-                            <h5 class="font-weight-bold">Merek</h5>
+                            <h5 class="font-weight-bold">Dosis</h5>
                             <p class="text"><?= $o->merek; ?></p>
                             <h5 class="font-weight-bold">Manufaktur</h5>
                             <p class="text"><?= $o->manufaktur; ?></p>

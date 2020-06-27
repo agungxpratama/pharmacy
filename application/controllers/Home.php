@@ -217,4 +217,26 @@ class Home extends CI_Controller {
 		$this->load->view('home/base/footer');
 		$this->load->view('home/base/foot_checkout');
 	}
+
+	public function PesanLagi($id)
+	{
+		$where = array('id_transaksi' => $id, );
+		$keranjang = $this->M_All->view_where('transaksi', $where)->row();
+
+		$datawhere = array('transaksi.id_pemesanan' => $keranjang->id_pemesanan, );
+		$buyAgain = $this->M_All->join_buy_again($datawhere)->result();
+		foreach ($buyAgain as $buyAgain) {
+			$data = array(
+				'id_obat' => $buyAgain->id_obat,
+				'nama_obat' => $buyAgain->nama_obat,
+				'harga_obat' => $buyAgain->harga_obat,
+				'quantity' => $buyAgain->quantity,
+				'id_user' => $this->session->userdata('id_user'),
+				'id_pemesanan' => 0,
+			);
+			$this->M_All->insert('keranjang2', $data);
+		}
+		// print_r($buyAgain);
+		redirect(base_url('index.php/home/cart'));
+	}
 }

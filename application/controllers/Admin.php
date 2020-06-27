@@ -223,6 +223,24 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/footer');
     }
 
+    public function TelahDiproses()
+    {
+        $where = array('proses' => 1, );
+        $data['pemesanan'] = $this->M_All->view_where('pemesanan', $where)->result();
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/pemesanan', $data);
+		$this->load->view('admin/footer');
+    }
+
+    public function BelumDiproses()
+    {
+        $where = array('proses' => 0, );
+        $data['pemesanan'] = $this->M_All->view_where('pemesanan', $where)->result();
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/pemesanan', $data);
+		$this->load->view('admin/footer');
+    }
+
     public function CekPemesanan($id)
     {
         $where = array('id_pemesanan' => $id);
@@ -296,5 +314,41 @@ class Admin extends CI_Controller {
         $this->load->view('admin/header');
         $this->load->view('admin/etc/tracking', $data);
         $this->load->view('admin/footer');
+    }
+
+    public function TrackingSelesai()
+    {
+        $where = array('transaksi.status' => 3, );
+        $data['transaksi'] = $this->M_All->join_transaksi_where('transaksi', 'pemesanan', $where)->result();
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/tracking', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function TrackingBelumDibayar()
+    {
+        $where = array('transaksi.status' => 0, );
+        $data['transaksi'] = $this->M_All->join_transaksi_where('transaksi', 'pemesanan', $where)->result();
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/tracking', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function TrackingTelahDibayar()
+    {
+        $where = array('transaksi.status' => 1, );
+        $data['transaksi'] = $this->M_All->join_transaksi_where('transaksi', 'pemesanan', $where)->result();
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/tracking', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function updateStock($id)
+    {
+        $where = array('id_obat' => $id);
+        $data = array('stock' => $this->input->post('stock'), );
+        $this->M_All->update('obat', $where, $data);
+        redirect('index.php/admin/viewObat/'.$id);
+
     }
 }

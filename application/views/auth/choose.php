@@ -37,7 +37,7 @@
 						<!-- <b>Pharmacy Kids.</b> -->
 						<b><a href="<?= base_url('index.php/') ?> ">
 							<h1>
-								Pharmacy Kids.
+								Pharmacy Kids
 							</h1>
 						</a></b>
 					</span>

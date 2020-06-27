@@ -33,6 +33,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="<?= base_url('index.php/Auth/actionRegister');?>" method="post">
+					<h2 class="text-center">Pharmacy Kids</h2><br>
 					<span class="login100-form-title p-b-43">
 						Register User
 					</span>
@@ -83,7 +84,7 @@
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('<?= base_url('assets_auth/')?>images/bg-01.jpg');">
+				<div class="login100-more" style="background-image: url('<?= base_url('assets_auth/')?>images/anak.jpg');">
 				</div>
 			</div>
 		</div>

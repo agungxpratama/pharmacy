@@ -32,10 +32,9 @@
                 </div>
                 <form action="<?= base_url()?>index.php/admin/tambahArtikel" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
-                  <p>Modal body text goes here.</p>
                       <div class="form-group">
                           <label for="exampleFormControlInput1">Judul Artikel</label>
-                          <input type="text" class="form-control bg-light border-1 small" placeholder="Judul Artikel..." name="judul" aria-label="namaObat" aria-describedby="basic-addon2">
+                          <input type="text" class="form-control bg-light border-1 small" placeholder="Judul Artikel" name="judul" aria-label="namaObat" aria-describedby="basic-addon2">
                       </div>
                       <div class="form-group">
                           <label for="exampleFormControlInput1">Foto</label>
@@ -43,12 +42,12 @@
                       </div>
                       <div class="form-group">
                           <label for="exampleFormControlInput1">Isi</label>
-                          <textarea name="isi" class="form-control bg-light border-1 small" rows="8" cols="80" aria-label="efekSamping" aria-describedby="basic-addon2"></textarea>
+                          <textarea name="isi" class="form-control bg-light border-1 small" placeholder="Isi" name="Isi" rows="8" cols="80" aria-label="efekSamping" aria-describedby="basic-addon2"></textarea>
                       </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
               </form>
               </div>
@@ -59,10 +58,7 @@
           <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
           <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Tabel Data Obat</h6>
-            </div>
+          
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

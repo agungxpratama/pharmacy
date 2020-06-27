@@ -133,8 +133,8 @@
 						<div class="cart_total_container">
 							<ul>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Subtotal</div>
-									<div class="cart_total_value ml-auto">Rp. <?= $total; ?>.00</div>
+									<div class="cart_total_title">Subtotal</div><?php 	foreach ($cart as $c): ?> 
+									<div class="cart_total_value ml-auto">Rp. <?=  $total*$c->quantity;  ?>.00</div>
 								</li>
 								<!-- <?php print_r($this->session->userdata()); ?> -->
 								<li class="d-flex flex-row align-items-center justify-content-start">
@@ -157,7 +157,8 @@
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="cart_total_title">Total</div>
-									<div class="cart_total_value ml-auto">Rp. <?= $total+$shipping ?>.00</div>
+									<div class="cart_total_value ml-auto">Rp. <?= $total*$c->quantity+$shipping; error_reporting(1); ?>.00</div>
+								<?php 	endforeach; ?>
 								</li>
 							</ul>
 						</div>

@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                    <div class="home_slider_title">Pharmacy Kids.</div>
+                                    <div class="home_slider_title">Pharmacy Kids</div>
                                     <div class="home_slider_subtitle">Solusi terbaik untuk anda menagani si kecil yang sakit.</div>
                                     <!-- <div class="button button_light home_button"><a href="#">Shop Now</a></div> -->
                                 </div>
@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                    <div class="home_slider_title">Pharmacy Kids.</div>
+                                    <div class="home_slider_title">Pharmacy Kids</div>
                                     <div class="home_slider_subtitle">Tidak perlu khawatir ketika si kecil jatuh sakit.</div>
                                     <!-- <div class="button button_light home_button"><a href="#">Shop Now</a></div> -->
                                 </div>
@@ -50,7 +50,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                    <div class="home_slider_title">Pharmacy Kids.</div>
+                                    <div class="home_slider_title">Pharmacy Kids</div>
                                     <div class="home_slider_subtitle">Kami hadir untuk memudahkan anda ketika si kecil sakit.</div>
                                     <!-- <div class="button button_light home_button"><a href="#">Shop Now</a></div> -->
                                 </div>
@@ -177,22 +177,20 @@
             <div class="col-lg-8 offset-lg-2">
                 <div class="newsletter_content text-center">
                     <div class="newsletter_title">Artikel</div>
-                    <div class="newsletter_text"><p>artikel kesehatan</p></div>
+                    <div class="newsletter_text"><p>Artikel Kesehatan</p></div>
                 </div>
             </div>
             <?php foreach ($artikel as $a): ?>
-                <a href="<?= base_url('index.php/home/') ?>detailartikel/<?= $a->id_artikel ?>">
-                    <div class="col-md-4 pt-3">
-                        <div class="avds_xl_container clearfix">
-                            <div class="avds_xl_background" style="background-image:url(<?= base_url('assets_admin/img/artikel/').$a->foto?>)"></div>
-                            <div class="p-3 mt-5 m-2 bg-dark">
-                                <div class="avds_title"><?= $a->judul ?></div>
-                                <div class="avds_text"><?= $a->tgl_buat ?></div>
-                                <div class="avds_link avds_xl_link"><a href="<?= base_url('index.php/home/') ?>detailartikel/<?= $a->id_artikel ?>">See More</a></div>
-                            </div>
+                <div class="col-md-5">
+                    <div class="avds_xl_container clearfix">
+                        <div class="avds_xl_background" style="background-image:url(<?= base_url('assets_admin/img/artikel/').$a->foto?>)"></div>
+                        <div class="avds_xl_content">
+                            <div class="avds_title" style="font-size: 25px;"><?= $a->judul ?></div>
+                            <div class="avds_text"><?= $a->tgl_buat ?></div>
+                            <div class="avds_link avds_xl_link"><a href="<?= base_url('index.php/home/') ?>detailartikel/<?= $a->id_artikel ?>">Lihat</a></div>
                         </div>
                     </div>
-                </a>
+                </div>
             <?php endforeach; ?>
         </div>
     </div>
@@ -219,7 +217,7 @@
             <div class="col-lg-4 icon_box_col">
                 <div class="icon_box">
                     <div class="icon_box_image"><img src="<?= base_url('assets_home/')?>images/icon_2.svg" alt=""></div>
-                    <div class="icon_box_title">Pengembailan</div>
+                    <div class="icon_box_title">Kualitas Barang Terjamin</div>
                     <div class="icon_box_text">
                         <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p> -->
                     </div>

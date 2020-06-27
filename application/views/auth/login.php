@@ -33,6 +33,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="<?= base_url('index.php/Auth/actionLogin');?>" method="post">
+					<h2 class="text-center">Pharmacy Kids</h2><br>
 					<span class="login100-form-title p-b-43">
 						Login User
 					</span>
@@ -94,7 +95,7 @@
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url(<?= base_url('assets_home/')?>images/pharmacy/home_slider_1.jpg);">
+				<div class="login100-more" style="background-image: url(<?= base_url('assets_home/')?>images/pharmacy/ben-white-4K2lIP0zc_k-unsplash.jpg);">
 				</div>
 			</div>
 		</div>

@@ -1,3 +1,7 @@
+<div id="notifications"><?php echo $this->session->flashdata('msg'); ?></div>
+  <script>
+    $('#notifications').slideDown('slow').delay(2000).slideUp('slow');
+  </script>
 <div class="home">
 		<div class="home_container">
 			<div class="home_background" style="background-image:url(<?= base_url('assets_home/')?>images/contact.jpg)"></div>
@@ -61,12 +65,16 @@
 						<!-- In Stock -->
 						<div class="in_stock_container">
 							<div class="availability">Availability :</div>
-							<span>In Stock</span>
+                            <?php if ($obat->stock == 0): ?>
+                                <span class="text-danger">Habis/Kosong</span>
+                            <?php elseif ($obat->stock > 0): ?>
+                                <span>Stok Tersedia : <?= $obat->stock ?></span>
+                            <?php endif; ?>
 						</div>
 
 						<div class="in_stock_container">
 							<div class="availability">Rating :</div>
-							<?php
+							<?php error_reporting(1);
 							$jumlah = 0;
 							$hasil = 0;
 							?>
@@ -131,12 +139,24 @@
 						<div class="details_text">
                             <h5 class="font-weight-bold">Kategori</h5>
                             <p class="text"><?= $obat->kategori; ?></p>
+                            <h5 class="font-weight-bold">Indikasi Umum</h5>
+                            <p class="text"><?= $obat->indikasi_umum; ?></p>
+                            <h5 class="font-weight-bold">Deskripsi</h5>
+                            <p class="text"><?= $obat->deskripsi; ?></p>
                             <h5 class="font-weight-bold">Jenis Obat</h5>
                             <p class="text"><?= $obat->jenis_obat; ?></p>
+                            <h5 class="font-weight-bold">Komposisi</h5>
+                            <p class="text"><?= $obat->komposisi; ?></p>
+                            <h5 class="font-weight-bold">Dosis</h5>
+                            <p class="text"><?= $obat->merek; ?></p>
+                            <h5 class="font-weight-bold">Aturan Pakai</h5>
+                            <p class="text"><?= $obat->aturan_pakai; ?></p>
                             <h5 class="font-weight-bold">Kemasan</h5>
                             <p class="text"><?= $obat->kemasan; ?></p>
                             <h5 class="font-weight-bold">Segmentasi</h5>
                             <p class="text"><?= $obat->segmentasi; ?></p>
+                            <h5 class="font-weight-bold">Manufaktur</h5>
+                            <p class="text"><?= $obat->manufaktur; ?></p>
                             <h5 class="font-weight-bold">Efek Samping</h5>
                             <p class="text"><?= $obat->efek_samping; ?></p>
 							<!-- <p> -->
@@ -152,7 +172,7 @@
                                     <input type="hidden" name="id_obat" value="<?= $obat->id_obat; ?>">
                                     <input type="hidden" name="harga_obat" value="<?= $obat->harga_obat; ?>">
                                     <input type="hidden" name="nama_obat" value="<?= $obat->nama_obat; ?>">
-    								<input id="quantity_input" type="text" pattern="[0-9]*" value="1" name="jumlah">
+    								<input id="quantity_input" type="text" pattern="[0-9]*" value="1" max="<?= $obat->stock ?>" name="jumlah">
     								<div class="quantity_buttons">
     									<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
     									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
@@ -161,7 +181,11 @@
 							</div>
 							<div class="button cart_button">
                                 <!-- <a href="#" onclick="document.getElementById('form_cart').submit();">Add to cart</a> -->
-                                <a href="#" onclick="document.getElementById('form_cart').submit();">Beli</a>
+                                <?php if ($obat->stock == 0): ?>
+                                    <a type="button" href="#" onclick="alert("Maaf stok Habis");">Stock Kosong</a>
+                                <?php elseif ($obat->stock > 0): ?>
+                                    <a href="#" onclick="document.getElementById('form_cart').submit();">Beli</a>
+                                <?php endif; ?>
                             </div>
 						</div>
 
@@ -211,6 +235,7 @@
 					<div class="newsletter_border"></div>
 				</div>
 			</div>
+
 			<!-- <div class="row">
 				<div class="col-lg-8 offset-lg-2">
 					<div class="newsletter_content text-center">
@@ -227,3 +252,16 @@
 			</div> -->
 		</div>
 	</div>
+	<style type="text/css">
+  #notifications {
+    cursor: pointer;
+    position: fixed;
+    right: 0px;
+    z-index: 9999;
+    bottom: 0px;
+    margin-bottom: 22px;
+    margin-right: 15px;
+    min-width: 300px;
+    max-width: 800px;
+}
+</style>

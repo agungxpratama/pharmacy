@@ -44,11 +44,7 @@
                                     Selesai
                                 <?php endif; ?>
                             </div>
-                            <div>
-                                <!-- Company -->
-                                <label for="checkout_company">Total Harga</label>
-                                <p class="text">Rp. <?= $t->total_harga ?>.00</p>
-                            </div>
+
                             <?php if ($t->status == 0): ?>
                                 <div class="badge badge-primary">
                                     Belum dibayar
@@ -158,7 +154,13 @@
                         <div class="order checkout_section">
                             <!-- <a href="£"> -->
                                 <div class="section_title">Pesanan Anda</div>
-                                <div class="button"><a href="<?= base_url('index.php/home/detailPesanan/'.$t->id_transaksi) ?>">Detail</a></div>
+                                <div class="row">
+                                    <div class="button"><a href="<?= base_url('index.php/home/detailPesanan/'.$t->id_transaksi) ?>">Detail</a></div>
+                                    <?php if ($t->status == 3): ?>
+                                        <div class="button"><a href="<?= base_url('index.php/home/PesanLagi/'.$t->id_transaksi) ?>">Pesan Lagi</a></div>
+                                    <?php endif; ?>
+
+                                </div>
                                 <div class="section_subtitle">Lihat Pesanan Anda</div>
                             <!-- </a> -->
                             <?php if ($t->status == 0): ?>

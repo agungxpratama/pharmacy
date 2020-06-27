@@ -32,7 +32,6 @@
                 </div>
                 <form action="<?= base_url()?>index.php/admin/tambahObat" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
-                  <p>Modal body text goes here.</p>
                       <div class="form-group">
                           <label for="exampleFormControlInput1">Nama Obat</label>
                           <input type="text" class="form-control bg-light border-1 small" placeholder="Nama Obat" name="nama_obat" aria-label="namaObat" aria-describedby="basic-addon2">
@@ -46,8 +45,8 @@
                           <input type="text" class="form-control bg-light border-1 small" placeholder="Kategori" name="kategori" aria-label="kategori" aria-describedby="basic-addon2">
                       </div>
                       <div class="form-group">
-                          <label for="exampleFormControlInput1">Merek</label>
-                          <input type="text" class="form-control bg-light border-1 small" placeholder="Merek" name="merek" aria-label="merek" aria-describedby="basic-addon2">
+                          <label for="exampleFormControlInput1">Dosis</label>
+                          <input type="text" class="form-control bg-light border-1 small" placeholder="Dosis" name="merek" aria-label="merek" aria-describedby="basic-addon2">
                       </div>
                       <div class="form-group">
                           <label for="exampleFormControlInput1">Jenis Obat</label>
@@ -88,7 +87,7 @@
                           <input type="text" class="form-control bg-light border-1 small" placeholder="Harga" name="harga_obat" aria-label="hargaObat" aria-describedby="basic-addon2">
                       </div>
                       <div class="form-group">
-                          <label for="exampleFormControlInput1">Efek Saming</label>
+                          <label for="exampleFormControlInput1">Efek Samping</label>
                           <input type="text" class="form-control bg-light border-1 small" placeholder="Efek Samping" name="efek_samping" aria-label="efekSamping" aria-describedby="basic-addon2">
                       </div>
                       <!-- <div class="form-group">
@@ -129,7 +128,7 @@
                         <th>Nama Obat</th>
                         <th>Foto</th>
                         <th>Kategori</th>
-                        <th>Merek</th>
+                        <th>Dosis</th>
                         <th>Jenis Obat</th>
                         <th>Kemasan</th>
                         <th>Harga Obat</th>

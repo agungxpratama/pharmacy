@@ -23,10 +23,10 @@
         </div>
     </div>
 
-	<!-- Checkout -->
+    <!-- Checkout -->
 
-	<div class="checkout">
-		<div class="container">
+    <div class="checkout">
+        <div class="container">
             <!-- <?php print_r($transaksi) ?>
             <?php print_r($rating) ?> -->
             <div class="row">
@@ -45,11 +45,7 @@
                             <?php endif; ?>
                         </div>
                         <!-- <div class="section_subtitle">Masukan Bukti Transaksi</div> -->
-                        <div>
-                            <!-- Company -->
-                            <label for="checkout_company">Total Harga</label>
-                            <p class="text">Rp. <?= $transaksi->total_harga ?>.00</p>
-                        </div>
+
                         <div class="checkout_form_container">
                             <div>
                                 <!-- Company -->
@@ -119,10 +115,16 @@
                                 <div class="button order_button"><a href="<?= base_url('index.php/transaksi/terimaPesanan/'.$transaksi->id_transaksi) ?>">Konfirmasi Pesanan</a></div>
                             <?php endif; ?>
                         </div>
+                        <div class="order_list_container">
+                            <!-- <input type="text" name="" value=""> -->
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#report<?= $p->id_pemesanan ?>">
+                                Menu
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
     <?php $this->load->view('home/modal_comment') ?>

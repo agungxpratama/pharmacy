@@ -90,7 +90,7 @@
                         </div>
                     </div> -->
 
-                    <?php foreach ($obat as $o): ?>
+                    <?php error_reporting(1); foreach ($obat as $o): ?>
                         <div class="product">
                             <div class="product_image"><img src="<?= base_url('assets_admin/img/foto/').$o->foto?>" alt=""></div>
                             <div class="product_content">
@@ -157,7 +157,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                     <?php endif; ?>
-        						</div>
+                                </div>
                                 <div class="product_price">Rp. <?= $o->harga_obat ?></div>
                             </div>
                         </div>
