@@ -173,6 +173,33 @@ class Transaksi extends CI_Controller
 
     public function report()
     {
-        // code...
+        $config['upload_path']          = './assets_admin/img/bukti_bayar/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['overwrite']        = true;
+		$config['max_size']             = 1024;
+
+		$this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('foto')){
+			$this->session->set_flashdata('error', $this->upload->display_errors());
+			$data = array('error' => $this->upload->display_errors());
+			print_r($data);// $this->load->view('pengelolaan/gudang', $data);
+		}else{
+			$this->session->set_flashdata('success', 'Foto Laporan Berhasil di Upload');
+			$data = array('success' => $this->upload->data('foto_bayar'));
+			// $this->load->view('pengelolaan/gudang', $data);
+            $foto = $this->upload->data('orig_name');
+			$data = array(
+                'foto' => $foto,
+                'pesan' => $this->input->post('pesan'),
+				'id_transaksi' => $this->input->post('id_transaksi'),
+			);
+			// $where = array('id_transaksi' => $this->input->post('id_transaksi'), );
+            if ($this->M_All->insert('report', $data) != true) {
+                redirect('index.php/home/pesanan/');
+            }else {
+                redirect('index.php/home/pesanan/');
+            }
+		}
     }
 }

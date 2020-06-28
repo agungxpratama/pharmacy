@@ -65,8 +65,16 @@
                     ID Transaksi : <?= $transaksi->id_transaksi ?>
                 </div>
                 <br>
-                <form class="form_checkout" action="index.html" method="post">
-                    <input type="file" name="pesan" value="">
+                <form class="form_checkout" action="<?= base_url('index.php/transaksi/report') ?>" method="post" enctype="multipart/form-data">
+                    <div class="from">
+                        <label for="checkout">Keterangan</label>
+                        <textarea name="pesan" rows="8" cols="60" class="checkout_input" placeholder="Keterangan...."></textarea>
+                    </div>
+                    <div class="form">
+                        <label for="checkout">Lampiran</label>
+                        <input type="file" name="foto" value="" class="checkout_input">
+                        <input type="hidden" name="id_transaksi" value="<?= $transaksi->id_transaksi ?>">
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
