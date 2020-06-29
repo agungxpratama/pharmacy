@@ -173,7 +173,7 @@ class Transaksi extends CI_Controller
 
     public function report()
     {
-        $config['upload_path']          = './assets_admin/img/bukti_bayar/';
+        $config['upload_path']          = './assets_admin/img/report/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['overwrite']        = true;
 		$config['max_size']             = 1024;

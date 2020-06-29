@@ -351,4 +351,22 @@ class Admin extends CI_Controller {
         redirect('index.php/admin/viewObat/'.$id);
 
     }
+
+    public function Report()
+    {
+        $data['report'] = $this->M_All->get_report()->result();
+        // print_r($data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/etc/report', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function hapusReport($id)
+    {
+        // echo $id;
+        $where = array('id_report' => $id, );
+        // print_r($where);
+        $this->M_All->delete($where, 'report');
+        redirect('index.php/admin/report');
+    }
 }

@@ -131,6 +131,8 @@
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Konsumen</h6>
             <a class="collapse-item" href="<?= base_url('index.php/admin/dataUser'); ?>">Data Konsumen</a>
+            <h6 class="collapse-header">Report</h6>
+            <a class="collapse-item" href="<?= base_url('index.php/admin/report'); ?>">Data Report</a>
 
           </div>
         </div>
@@ -144,7 +146,7 @@
       </li>
 
       <!-- Nav Item - Charts -->
-      
+
 
 
       <!-- Nav Item - Tables -->

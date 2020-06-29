@@ -137,4 +137,13 @@ class M_All extends CI_Model{
 		$this->db->where($where);
         return $this->db->get();
     }
+
+    public function get_report()
+    {
+        $this->db->select('*');
+        $this->db->from('report');
+        $this->db->join('transaksi', 'transaksi.id_transaksi = report.id_transaksi');
+        $this->db->join('pemesanan', 'pemesanan.id_pemesanan = transaksi.id_pemesanan');
+        return $this->db->get();
+    }
 }
