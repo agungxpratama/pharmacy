@@ -75,11 +75,11 @@
                         <input type="file" name="foto" value="" class="checkout_input">
                         <input type="hidden" name="id_transaksi" value="<?= $transaksi->id_transaksi ?>">
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
             </div>
         </div>
     </div>
